@@ -1,8 +1,8 @@
 // Initialize syntax highlighting
 hljs.highlightAll();
 
-const COPY_DIR = '/media/copy_icon.png';
-const TICK_DIR = '/media/tick.png';
+const COPY_DIR = MEDIA_PATH + '/media/copy_icon.png';
+const TICK_DIR = MEDIA_PATH + '/media/tick.png';
 
 // Create and show copy notification
 function showCopyNotification() {
