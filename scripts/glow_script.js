@@ -40,12 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
               const distance = Math.sqrt(dx*dx + dy*dy);
               const opacity = Math.max(0, 1 - (distance / glowRadius));
 
+              // section-title
               if (element.classList.contains('section-title')) {
                   element.style.textShadow = `
                   ${dx * 0.05}px ${dy * 0.05}px 25px rgba(59, 248, 251, ${0.5 * opacity}),
                   0 0 35px rgba(59, 248, 251, ${0.4 * opacity})`;
+              // doc-card
               } else if(element.classList.contains('doc-card')) {
                 element.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(59, 248, 251, ${0.5 * opacity}), transparent 40%)`;
+              // hero
               } else {
                 element.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(59, 248, 251, ${0.15 * opacity}), transparent 40%)`;
               }

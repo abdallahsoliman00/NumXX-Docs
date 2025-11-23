@@ -8,14 +8,16 @@
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div>
-                    <a href="index.html" class="logo">
-                        <img src="media/numxx_logo_plain.png" alt="NumXX Logo">
-                    </a>
-                </div>
+<header>
+    <div class="container">
+        <div class="header-content">
+
+            <!-- LEFT SIDE GROUP -->
+            <div class="left-group">
+                <a href="index.html" class="logo">
+                    <img src="media/numxx_logo_plain.png" alt="NumXX Logo">
+                </a>
+
                 <div class="header-text">
                     <h1>
                         <a class="header-text" href="index.html">
@@ -25,79 +27,96 @@
                     <p>C++ Numerical Computing Library</p>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="getting_started.html">Getting Started</a></li>
-                <li><a href="documentation.html">Documentation</a></li>
-                <li><a href="examples.html">Examples</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="container">
-        <section id="documentation">
-            <h2 class="section-title">Documentation</h2>
-
-            <div class="docs-grid">
-
-                <a href="#data-structures" class="doc-card">
-                    <div class="doc-card-content">
-                        <h3>Library Structure</h3>
-                        <p>See how NumXX files are structured.</p>
-                    </div>
-                </a>
-
-                <a href="#data-structures" class="doc-card">
-                    <div class="doc-card-content">
-                        <h3>Data Structures & Containers</h3>
-                        <p>Explore how NumXX stores different data structures including multidimensional arrays, matrices, tensors, and other containers used in computations.</p>
-                    </div>
-                </a>
-
-                <a href="docs_mini_pages/array_creation.html" class="doc-card">
-                    <div class="doc-card-content">
-                        <h3>Array Creation APIs</h3>
-                        <p>Learn how to create and initialize arrays using various methods: zeros, ones, ranges, random values, and custom initialization functions.</p>
-                    </div>
-                </a>
-
-                <a href="#operations" class="doc-card">
-                    <div class="doc-card-content">
-                        <h3>Mathematical Operations</h3>
-                        <p>Comprehensive guide to element-wise operations, linear algebra routines, and other mathematical computations.</p>
-                    </div>
-                </a>
-
-                <a href="#signal-Processing" class="doc-card">
-                    <div class="doc-card-content">
-                        <h3>Signal Processing</h3>
-                        <p>Explore the different functions that can help with Signal Processing.</p>
-                    </div>
-                </a>
-
-                <a href="#file_handling" class="doc-card">
-                    <div class="doc-card-content">
-                        <h3>File Operations</h3>
-                        <p>Learn how to NumXX saves and reads different data types to external files.</p>
-                    </div>
+            <!-- RIGHT SIDE SMALL LOGO -->
+            <div class="right-logo">
+                <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                    <img src="media/github-logo-light.png" alt="Small Logo">
                 </a>
             </div>
-        </section>
 
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 abdallahsoliman00.</p>
         </div>
-    </footer>
+    </div>
+</header>
 
-    <script src="scripts/glow_script.js"></script>
-    <script src="scripts/rotate_header_script.js"></script>
+<nav>
+    <div class="container">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li>
+                <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+                    Documentation
+                </a>
+            </li>
+            <li><a href="examples.html">Examples</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <section id="documentation">
+        <h2 class="section-title">Documentation</h2>
+
+        <div class="docs-grid">
+
+            <a href="docs_mini_pages/lib_structure.html" class="doc-card">
+                <div class="doc-card-content">
+                    <h3>Library Structure</h3>
+                    <p>See how NumXX files are structured.</p>
+                </div>
+            </a>
+
+            <a href="docs_mini_pages/data_structures.html" class="doc-card">
+                <div class="doc-card-content">
+                    <h3>Data Structures & Containers</h3>
+                    <p>Explore how NumXX stores different data structures including multidimensional arrays, matrices,
+                        tensors, and other containers used in computations.</p>
+                </div>
+            </a>
+
+            <a href="docs_mini_pages/array_creation.html" class="doc-card">
+                <div class="doc-card-content">
+                    <h3>Array Creation APIs</h3>
+                    <p>Learn how to create and initialize arrays using various methods: zeros, ones, ranges, random
+                        values, and custom initialization functions.</p>
+                </div>
+            </a>
+
+            <a href="docs_mini_pages/math_ops.html" class="doc-card">
+                <div class="doc-card-content">
+                    <h3>Mathematical Operations</h3>
+                    <p>Comprehensive guide to element-wise operations, linear algebra routines, and other mathematical
+                        computations.</p>
+                </div>
+            </a>
+
+            <a href="docs_mini_pages/file_ops.html" class="doc-card">
+                <div class="doc-card-content">
+                    <h3>File Operations</h3>
+                    <p>Learn how to NumXX saves and reads different data types to external files.</p>
+                </div>
+            </a>
+
+            <a href="docs_mini_pages/numxx_extras.html" class="doc-card">
+                <div class="doc-card-content">
+                    <h3>NumXX Extras</h3>
+                    <p>Explore the extra modules available in NumXX. These include Signal Processing,
+                        random and other miscellaneous functionality.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 abdallahsoliman00.</p>
+    </div>
+</footer>
+
+<script src="scripts/glow_script.js"></script>
+<script src="scripts/rotate_header_script.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .menu-toggle.shifted {
@@ -48,7 +48,7 @@
     width: 280px;
     height: 100%;
     background: #0c1016;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
@@ -106,6 +106,8 @@
     display: block;
     padding: 1rem 1.5rem;
     color: whitesmoke;
+    font-family: Consolas, serif;
+    font-size: 16px;
     text-decoration: none;
     transition: background 0.3s, padding-left 0.3s;
 }
@@ -145,6 +147,7 @@
     color: #adb4e4;
     margin-bottom: 1rem;
     font-size: 2rem;
+    font-family: Consolas, serif;
 }
 
 .content-section h3 {
@@ -164,43 +167,20 @@
     }
 }
 
-.param-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-}
-
-.param-table th,
-.param-table td {
-    border: 1px solid #ddd;
-    padding: 0.75rem;
-    text-align: left;
-}
-
-.param-table th {
-    background: #717393;
-    color: white;
-}
-
-.param-table tr:nth-child(even) {
-    background: rgba(103, 103, 103, 0.25);
-}
-
-.code-block {
-    background: #1d2024;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1rem;
-    margin: 1rem 0;
-    overflow-x: auto;
-    font-family: 'JetBrains Mono', monospace;
-    white-space: pre;
-    line-height: 1.5;
-}
-
 .code-container {
     position: relative;
     margin: 1rem 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+pre {
+    position: relative;
+    background: #282c34;
+}
+
+pre code {
+    font-size: 14px;
 }
 
 .copy-btn {
@@ -232,11 +212,6 @@
     display: block;
 }
 
-.code-block,
-pre {
-    position: relative;
-}
-
 
 /* Copy notification popup */
 .copy-notification {
@@ -260,4 +235,8 @@ pre {
 .copy-notification.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+* {
+    scrollbar-color: #3a3f4b #1a1d24;
 }

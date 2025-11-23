@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>NumXX - Documentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/hamburger_menu.css">
 </head>
@@ -11,56 +12,66 @@
 <body>
 
 
-    <!-- Hamburger Menu Button -->
-    <button class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+<!-- Hamburger Menu Button -->
+<button class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>Array Creation APIs</h3>
-            <button class="close-btn" id="closeBtn">×</button>
-        </div>
-        <ul class="sidebar-menu">
-            <li><a href="#" data-section="zeros" class="active">zeros()</a></li>
-            <li><a href="#" data-section="ones">ones()</a></li>
-            <li><a href="#" data-section="arange">arange()</a></li>
-            <li><a href="#" data-section="linspace">linspace()</a></li>
-            <li><a href="#" data-section="reshape">reshape()</a></li>
-            <li><a href="#" data-section="transpose">transpose()</a></li>
-            <li><a href="#" data-section="dot">dot()</a></li>
-            <li><a href="#" data-section="matmul">matmul()</a></li>
-            <li><a href="#" data-section="sum">sum()</a></li>
-            <li><a href="#" data-section="mean">mean()</a></li>
-            <li><a href="#" data-section="std">std()</a></li>
-            <li><a href="#" data-section="max">max()</a></li>
-            <li><a href="#" data-section="min">min()</a></li>
-            <li><a href="#" data-section="fft">fft()</a></li>
-            <li><a href="#" data-section="ifft">ifft()</a></li>
-        </ul>
-    </aside>
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h3>Array Creation APIs</h3>
+        <button class="close-btn" id="closeBtn">×</button>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="#" data-section="zeros" class="active">zeros()</a></li>
+        <li><a href="#" data-section="zeros_like" class="active">zeros_like()</a></li>
+        <li><a href="#" data-section="ones" class="active">ones()</a></li>
+        <li><a href="#" data-section="ones_like" class="active">ones_like()</a></li>
+        <li><a href="#" data-section="linspace" class="active">linspace()</a></li>
+        <li><a href="#" data-section="arange" class="active">arange()</a></li>
+        <li><a href="#" data-section="eye" class="active">eye()</a></li>
+        <li><a href="#" data-section="identity" class="active">identity()</a></li>
+        <li><a href="#" data-section="empty" class="active">empty()</a></li>
+        <li><a href="#" data-section="empty_like" class="active">empty_like()</a></li>
+        <li><a href="#" data-section="full" class="active">full()</a></li>
+        <li><a href="#" data-section="full_like" class="active">full_like()</a></li>
+        <li><a href="#" data-section="copy" class="active">copy()</a></li>
+        <li><a href="#" data-section="deepcopy" class="active">deepcopy()</a></li>
+    </ul>
+</aside>
 
-    <div class="main-content">
+<div class="main-content">
 
     <header>
         <div class="container">
             <div class="header-content">
-                <div>
+
+                <!-- LEFT SIDE GROUP -->
+                <div class="left-group">
                     <a href="../index.html" class="logo">
                         <img src="../media/numxx_logo_plain.png" alt="NumXX Logo">
                     </a>
+
+                    <div class="header-text">
+                        <h1>
+                            <a class="header-text" href="../index.html">
+                                <img src="../media/NumXX_text_light.png" alt="NumXX">
+                            </a>
+                        </h1>
+                        <p>C++ Numerical Computing Library</p>
+                    </div>
                 </div>
-                <div class="header-text">
-                    <h1>
-                        <a class="header-text" href="../index.html">
-                            <img src="../media/NumXX_text_light.png" alt="NumXX">
-                        </a>
-                    </h1>
-                    <p>C++ Numerical Computing Library</p>
+
+                <!-- RIGHT SIDE SMALL LOGO -->
+                <div class="right-logo">
+                    <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                        <img src="../media/github-logo-light.png" alt="Small Logo">
+                    </a>
                 </div>
+
             </div>
         </div>
     </header>
@@ -81,221 +92,48 @@
         <!-- zeros() Section -->
         <section class="content-section active" id="zeros">
             <h2>zeros()</h2>
-            <p>Creates an array filled with zeros.</p>
+            <p>Creates an array of a given shape, filled with zeros.</p>
 
             <h3>Syntax</h3>
-            <pre><code class="language-cpp">Array zeros(const Shape& shape, DataType dtype = FLOAT64)</code></pre>
+            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
+NArray&lt;T&gt; zeros(const Shape&amp; shape);</code></pre>
+            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
+NArray&lt;T&gt; zeros(const size_t&amp; size);</code></pre>
 
             <h3>Parameters</h3>
-            <table class="param-table">
-                <tr>
-                    <th>Parameter</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>shape</td>
-                    <td>Shape</td>
-                    <td>The dimensions of the array to create</td>
-                </tr>
-                <tr>
-                    <td>dtype</td>
-                    <td>DataType</td>
-                    <td>The data type of the array elements (default: FLOAT64)</td>
-                </tr>
-            </table>
+            <div class="params-section">
+                <div class="param-item">
+                    <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
+                    <div class="param-description">The data type to be stored.</div>
+                </div>
+                <div class="param-item">
+                    <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                    <div class="param-description">Dimensions of the shape to create.</div>
+                </div>
+                <div class="param-item">
+                    <div class="param-name">size : <span class="param-type">size_t</span></div>
+                    <div class="param-description">The size of the array (creates a 1D array).</div>
+                </div>
+            </div>
 
             <h3>Returns</h3>
-            <p>An Array object filled with zeros of the specified shape and data type.</p>
+            <p>An NArray object filled with zeros.</p>
 
             <h3>Example</h3>
-            <pre><code class="language-cpp">#include &lt;numxx/numxx.hpp&gt;
+            <pre><code class="language-cpp">#include &lt;NumXX.hpp&gt;
 
 int main() {
-    auto arr = numxx::zeros({3, 4});
-    arr.print();
-    return 0;
-}</code>
-            </pre>
-        </section>
+    auto mat = numxx::zeros&lt;float&gt;({2,3});
+    auto arr = numxx::zeros&lt;float&gt;(5);
 
-        <!-- ones() Section -->
-        <section class="content-section" id="ones">
-            <h2>ones()</h2>
-            <p>Creates an array filled with ones.</p>
-
-            <h3>Syntax</h3>
-            <pre><code class="language-cpp">Array ones(const Shape& shape, DataType dtype = FLOAT64)</code></pre>
-
-            <h3>Parameters</h3>
-            <table class="param-table">
-                <tr>
-                    <th>Parameter</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>shape</td>
-                    <td>Shape</td>
-                    <td>The dimensions of the array to create</td>
-                </tr>
-                <tr>
-                    <td>dtype</td>
-                    <td>DataType</td>
-                    <td>The data type of the array elements (default: FLOAT64)</td>
-                </tr>
-            </table>
-
-            <h3>Returns</h3>
-            <p>An Array object filled with ones of the specified shape and data type.</p>
-
-            <h3>Example</h3>
-            <pre><code class="language-cpp">#include &lt;numxx/numxx.hpp&gt;
-
-int main() {
-    auto arr = numxx::ones({2, 3, 4});
-    arr.print();
-    return 0;
+    std::cout &lt;&lt; mat &lt;&lt; std::endl;
+    // &gt;&gt; [[0 0 0]
+    //     [0 0 0]]
+    std::cout &lt;&lt; arr &lt;&lt; std::endl;
+    // &gt;&gt; [0 0 0 0 0]
 }</code></pre>
         </section>
 
-        <!-- arange() Section -->
-        <section class="content-section" id="arange">
-            <h2>arange()</h2>
-            <p>Creates an array with evenly spaced values within a given interval.</p>
-
-            <h3>Syntax</h3>
-            <pre><code class="language-cpp">Array arange(double start, double stop, double step = 1.0)</code></pre>
-
-            <h3>Parameters</h3>
-            <table class="param-table">
-                <tr>
-                    <th>Parameter</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>start</td>
-                    <td>double</td>
-                    <td>Start of interval (inclusive)</td>
-                </tr>
-                <tr>
-                    <td>stop</td>
-                    <td>double</td>
-                    <td>End of interval (exclusive)</td>
-                </tr>
-                <tr>
-                    <td>step</td>
-                    <td>double</td>
-                    <td>Spacing between values (default: 1.0)</td>
-                </tr>
-            </table>
-
-            <h3>Example</h3>
-            <pre><code class="language-cpp">auto arr = numxx::arange(0, 10, 2);  // [0, 2, 4, 6, 8]</code></pre>
-        </section>
-
-        <!-- linspace() Section -->
-        <section class="content-section" id="linspace">
-            <h2>linspace()</h2>
-            <p>Creates an array with evenly spaced values over a specified interval.</p>
-
-            <h3>Syntax</h3>
-            <pre><code class="language-cpp">Array linspace(double start, double stop, size_t num = 50)</code></pre>
-
-            <h3>Parameters</h3>
-            <table class="param-table">
-                <tr>
-                    <th>Parameter</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>start</td>
-                    <td>double</td>
-                    <td>Starting value of the sequence</td>
-                </tr>
-                <tr>
-                    <td>stop</td>
-                    <td>double</td>
-                    <td>End value of the sequence</td>
-                </tr>
-                <tr>
-                    <td>num</td>
-                    <td>size_t</td>
-                    <td>Number of samples to generate (default: 50)</td>
-                </tr>
-            </table>
-
-            <h3>Example</h3>
-            <pre><code class="language-cpp">auto arr = numxx::linspace(0, 1, 5);  // [0.0, 0.25, 0.5, 0.75, 1.0]</code></pre>
-        </section>
-
-        <section class="content-section" id="reshape">
-            <h2>reshape()</h2>
-            <p>Returns a new array with the same data but different dimensions.</p>
-            <pre><code class="language-cpp">Array reshape(const Array& arr, const Shape& new_shape)</code></pre>
-        </section>
-
-        <section class="content-section" id="transpose">
-            <h2>transpose()</h2>
-            <p>Permutes the dimensions of an array.</p>
-            <pre><code class="language-cpp">Array transpose(const Array& arr)</code></pre>
-        </section>
-
-        <section class="content-section" id="dot">
-            <h2>dot()</h2>
-            <p>Computes the dot product of two arrays.</p>
-            <pre><code class="language-cpp">Array dot(const Array& a, const Array& b)</code></pre>
-        </section>
-
-        <section class="content-section" id="matmul">
-            <h2>matmul()</h2>
-            <p>Matrix multiplication of two arrays.</p>
-            <pre><code class="language-cpp">Array matmul(const Array& a, const Array& b)</code></pre>
-        </section>
-
-        <section class="content-section" id="sum">
-            <h2>sum()</h2>
-            <p>Sum of array elements over a given axis.</p>
-            <pre><code class="language-cpp">Array sum(const Array& arr, int axis = -1)</code></pre>
-        </section>
-
-        <section class="content-section" id="mean">
-            <h2>mean()</h2>
-            <p>Compute the arithmetic mean along the specified axis.</p>
-            <pre><code class="language-cpp">Array mean(const Array& arr, int axis = -1)</code></pre>
-        </section>
-
-        <section class="content-section" id="std">
-            <h2>std()</h2>
-            <p>Compute the standard deviation along the specified axis.</p>
-            <pre><code class="language-cpp">Array std(const Array& arr, int axis = -1)</code></pre>
-        </section>
-
-        <section class="content-section" id="max">
-            <h2>max()</h2>
-            <p>Return the maximum of an array or maximum along an axis.</p>
-            <pre><code class="language-cpp">Array max(const Array& arr, int axis = -1)</code></pre>
-        </section>
-
-        <section class="content-section" id="min">
-            <h2>min()</h2>
-            <p>Return the minimum of an array or minimum along an axis.</p>
-            <pre><code class="language-cpp">Array min(const Array& arr, int axis = -1)</code></pre>
-        </section>
-
-        <section class="content-section" id="fft">
-            <h2>fft()</h2>
-            <p>Compute the one-dimensional discrete Fourier Transform.</p>
-            <pre><code class="language-cpp">Array fft(const Array& arr)</code></pre>
-        </section>
-
-        <section class="content-section" id="ifft">
-            <h2>ifft()</h2>
-            <p>Compute the one-dimensional inverse discrete Fourier Transform.</p>
-            <pre><code class="language-cpp">Array ifft(const Array& arr)</code></pre>
-        </section>
 
     </main>
 
@@ -305,13 +143,13 @@ int main() {
         </div>
     </footer>
 
-    </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
-    <script src="../scripts/hamburger_menu_script.js"></script>
-    <script src="../scripts/rotate_header_script.js"></script>
-    <script>const MEDIA_PATH = '../';</script>
-    <script src="../scripts/code_blocks_script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+<script src="../scripts/hamburger_menu_script.js"></script>
+<script src="../scripts/rotate_header_script.js"></script>
+<!--    <script>const MEDIA_PATH = '../';</script>-->
+<script src="../scripts/code_blocks_script.js"></script>
 </body>
 </html>

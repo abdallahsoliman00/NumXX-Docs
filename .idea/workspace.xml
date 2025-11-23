@@ -17,7 +17,26 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="" />
+    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs_mini_pages/data_structures.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs_mini_pages/file_ops.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs_mini_pages/lib_structure.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs_mini_pages/math_ops.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs_mini_pages/numxx_extras.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/github-logo-light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/hamburger_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/hamburger_menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs_mini_pages/array_creation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs_mini_pages/array_creation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation.html" beforeDir="false" afterPath="$PROJECT_DIR$/documentation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getting_started.html" beforeDir="false" afterPath="$PROJECT_DIR$/getting_started.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/code_blocks_script.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/code_blocks_script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/glow_script.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/glow_script.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,31 +45,53 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+    <option name="myAllFileTypesSelected" value="false" />
+    <option name="mySelectedFileTypes">
+      <set>
+        <option value="CSS" />
+        <option value="HTML" />
+        <option value="JSON" />
+      </set>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "abdallahsoliman00"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;abdallahsoliman00&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/abdallahsoliman00/NumXX-Website.git",
-    "accountId": "c74f4ba2-a75f-4002-8474-bb4ef3e5768d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/abdallahsoliman00/NumXX-Website.git&quot;,
+    &quot;accountId&quot;: &quot;c74f4ba2-a75f-4002-8474-bb4ef3e5768d&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="35kNVfSzSxv0A0MPlQsJTxHIfhi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -68,7 +109,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.grazie.pro.style.in.ai.assistant",
+    "settings.editor.selected.configurable": "actions.on.save",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -81,6 +122,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763650135371</updated>
       <workItem from="1763650136931" duration="343000" />
+      <workItem from="1763650801389" duration="32082000" />
     </task>
     <servers />
   </component>
