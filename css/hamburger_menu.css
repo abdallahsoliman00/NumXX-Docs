@@ -106,7 +106,7 @@
     display: block;
     padding: 1rem 1.5rem;
     color: whitesmoke;
-    font-family: Consolas, serif;
+    font-family: monospace, serif;
     font-size: 16px;
     text-decoration: none;
     transition: background 0.3s, padding-left 0.3s;
@@ -147,7 +147,7 @@
     color: #adb4e4;
     margin-bottom: 1rem;
     font-size: 2rem;
-    font-family: Consolas, serif;
+    font-family: monospace, serif;
 }
 
 .content-section h3 {

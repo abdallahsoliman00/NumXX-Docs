@@ -11,12 +11,6 @@ body {
     background: #0c1016;
 }
 
-.logo {
-    height: 90px;
-    width: auto;
-    display: flex;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -135,17 +129,46 @@ header {
 }
 
 
+.logo {
+    height: 90px;
+    width: auto;
+    display: flex;
+}
+
+
+/* --- Default desktop --- */
 .header-content {
     display: flex;
-    justify-content: space-between; /* Push left and right apart */
+    justify-content: space-between;
     align-items: center;
 }
 
 .left-group {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
 }
+
+/*--- MOBILE/TABLET --- */
+@media (max-width: 768px) {
+
+    /* Keep header-content in a row! */
+    .header-content {
+        flex-direction: row;
+    }
+
+    /* Stack the text under the logo, but keep them grouped together */
+    .left-group {
+        flex-direction: column;
+        align-items: flex-start; /* align left */
+        gap: 0.5rem;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+}
+
 
 .right-logo img {
     width: 40px;
@@ -219,18 +242,6 @@ footer {
     padding: 0.5rem 0;
     margin-top: 3rem;
     font-size: 0.75rem;
-}
-
-@media (max-width: 768px) {
-
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav ul {
-        justify-content: center;
-    }
 }
 
 .section-title {

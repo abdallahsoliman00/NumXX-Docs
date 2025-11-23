@@ -17,11 +17,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="Polished the interface and finished properly structuring the website.">
+    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="Quick fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/hamburger_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/hamburger_menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs_mini_pages/array_creation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs_mini_pages/array_creation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getting_started.html" beforeDir="false" afterPath="$PROJECT_DIR$/getting_started.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/code_blocks_script.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/code_blocks_script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763650135371</updated>
       <workItem from="1763650136931" duration="343000" />
-      <workItem from="1763650801389" duration="33273000" />
+      <workItem from="1763650801389" duration="37076000" />
     </task>
     <task id="LOCAL-00001" summary="Polished the interface and finished properly structuring the website.">
       <option name="closed" value="true" />
@@ -118,7 +118,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763856167424</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Quick fixes">
+      <option name="closed" value="true" />
+      <created>1763857305060</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763857305060</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Quick fixes">
+      <option name="closed" value="true" />
+      <created>1763857476483</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763857476483</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +142,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Polished the interface and finished properly structuring the website." />
-    <option name="LAST_COMMIT_MESSAGE" value="Polished the interface and finished properly structuring the website." />
+    <MESSAGE value="Quick fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick fixes" />
   </component>
 </project>
