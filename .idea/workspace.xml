@@ -17,10 +17,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="Fix?">
-      <change beforePath="$PROJECT_DIR$/css/hamburger_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/hamburger_menu.css" afterDir="false" />
+    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="- Added welcome message and made some small changes.&#10;&#10;- Made the content width fixed at 80% of screen width.">
+      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getting_started.html" beforeDir="false" afterPath="$PROJECT_DIR$/getting_started.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763650135371</updated>
       <workItem from="1763650136931" duration="343000" />
-      <workItem from="1763650801389" duration="45244000" />
+      <workItem from="1763650801389" duration="53242000" />
     </task>
     <task id="LOCAL-00001" summary="Polished the interface and finished properly structuring the website.">
       <option name="closed" value="true" />
@@ -142,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763932161317</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Added welcome message and made some small changes.&#10;&#10;- Made the content width fixed at 80% of screen width.">
+      <option name="closed" value="true" />
+      <created>1763943996188</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763943996188</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +160,7 @@
     <MESSAGE value="Polished the interface and finished properly structuring the website." />
     <MESSAGE value="Quick fixes" />
     <MESSAGE value="Fix?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix?" />
+    <MESSAGE value="- Added welcome message and made some small changes.&#10;&#10;- Made the content width fixed at 80% of screen width." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added welcome message and made some small changes.&#10;&#10;- Made the content width fixed at 80% of screen width." />
   </component>
 </project>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e2ebf3;
+            background: #0c1016;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(122, 45, 147, 0.6) 0%, rgba(0, 68, 128, 0.6) 100%);
+            padding: 1.1rem 0;
+        }
+
+        .big-logo img {
+            height: 90px;
+            width: auto;
+            display: flex;
+        }
+
+        .small-logo img {
+            width: 40px;
+            height: auto;
+        }
+
+        header .container {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1rem;
+            color: #adb4e4;
+        }
+
+        .logo-text-container img {
+            display: block;
+            height: 30px;
+            width: auto;
+        }
+
+        .left-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 2em;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="left-container">
+
+            <div class="big-logo">
+                <a href="index.html">
+                    <img src="media/numxx_logo_plain.png" alt="NumXX">
+                </a>
+            </div>
+
+            <div class="logo-text-container">
+                <a href="index.html">
+                    <img src="media/NumXX_text_light.png" alt="NumXX">
+                </a>
+                C++ Numerical Computing Library
+            </div>
+
+        </div>
+
+        <div class="small-logo">
+            <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                <img src="media/github-logo-light.png" alt="NumXX GitHub">
+            </a>
+        </div>
+    </div>
+</header>
+
+</body>
+
+</html>
