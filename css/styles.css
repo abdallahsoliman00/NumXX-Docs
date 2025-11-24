@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -111,7 +111,7 @@ body {
 }
 
 .doc-card h3 {
-    color: #64b5f6;
+    color: #82b1fb;
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
 }
@@ -136,32 +136,17 @@ header {
 }
 
 
-/* --- Default desktop --- */
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Push left and right apart */
     align-items: center;
 }
 
-.left-group {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-/*--- MOBILE/TABLET --- */
 @media (max-width: 768px) {
 
-    /* Keep header-content in a row! */
     .header-content {
-        flex-direction: row;
-    }
-
-    /* Stack the text under the logo, but keep them grouped together */
-    .left-group {
         flex-direction: column;
-        align-items: flex-start; /* align left */
-        gap: 0.5rem;
+        text-align: center;
     }
 
     nav ul {
@@ -169,6 +154,11 @@ header {
     }
 }
 
+.left-group {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
 
 .right-logo img {
     width: 40px;
@@ -291,4 +281,35 @@ a:hover {
 .param-description {
     line-height: 1.5;
     padding-left: 1rem;
+}
+
+.general-structure {
+    color: #e2ebf3;
+}
+
+.general-structure h1,
+.general-structure h2 {
+    color: #82b1fb;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.general-structure h3 {
+    color: #adb4e4;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.general-structure p {
+    margin-bottom: 1rem;
+}
+
+.quote {
+    padding: 0.7rem 1rem;
+    margin: 0 auto;
+    background: rgba(40, 44, 52, 0.53);
+    border-radius: 5px;
+    text-align: center;
+    width: 20cm;
+    font-weight: bold;
 }

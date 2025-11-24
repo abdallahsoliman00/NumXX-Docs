@@ -17,11 +17,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="Quick fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="578cfae9-9fb7-46af-86a4-21523710d1ae" name="Changes" comment="Fix?">
       <change beforePath="$PROJECT_DIR$/css/hamburger_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/hamburger_menu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs_mini_pages/array_creation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs_mini_pages/array_creation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getting_started.html" beforeDir="false" afterPath="$PROJECT_DIR$/getting_started.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763650135371</updated>
       <workItem from="1763650136931" duration="343000" />
-      <workItem from="1763650801389" duration="37076000" />
+      <workItem from="1763650801389" duration="45244000" />
     </task>
     <task id="LOCAL-00001" summary="Polished the interface and finished properly structuring the website.">
       <option name="closed" value="true" />
@@ -134,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763857476483</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix?">
+      <option name="closed" value="true" />
+      <created>1763932161317</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763932161317</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +151,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Polished the interface and finished properly structuring the website." />
     <MESSAGE value="Quick fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quick fixes" />
+    <MESSAGE value="Fix?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix?" />
   </component>
 </project>
