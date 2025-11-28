@@ -1,122 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>NumXX - Documentation</title>
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/hamburger_menu.css">
+    <link rel="stylesheet" href="../css/code_blocks.css">
 </head>
 
 <body>
 
 
-<!-- Hamburger Menu Button -->
-<button class="menu-toggle" id="menuToggle">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+    <!-- Hamburger Menu Button -->
+    <!-- <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button> -->
 
-<!-- Sidebar -->
-<aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <h3>Array Creation APIs</h3>
-        <button class="close-btn" id="closeBtn">×</button>
-    </div>
-    <ul class="sidebar-menu">
-        <li><a href="#" data-section="zeros" class="active">zeros()</a></li>
-        <li><a href="#" data-section="zeros_like">zeros_like()</a></li>
-        <li><a href="#" data-section="ones">ones()</a></li>
-        <li><a href="#" data-section="ones_like">ones_like()</a></li>
-        <li><a href="#" data-section="linspace">linspace()</a></li>
-        <li><a href="#" data-section="arange">arange()</a></li>
-        <li><a href="#" data-section="eye">eye()</a></li>
-        <li><a href="#" data-section="identity">identity()</a></li>
-        <li><a href="#" data-section="empty">empty()</a></li>
-        <li><a href="#" data-section="empty_like">empty_like()</a></li>
-        <li><a href="#" data-section="full">full()</a></li>
-        <li><a href="#" data-section="full_like">full_like()</a></li>
-        <li><a href="#" data-section="copy">copy()</a></li>
-        <li><a href="#" data-section="deepcopy">deepcopy()</a></li>
-    </ul>
-</aside>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Array Creation APIs</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" data-section="linspace" class="active">linspace()</a></li>
+            <li><a href="#" data-section="arange">arange()</a></li>
+            <li><a href="#" data-section="zeros">zeros()</a></li>
+            <li><a href="#" data-section="zeros_like">zeros_like()</a></li>
+            <li><a href="#" data-section="ones">ones()</a></li>
+            <li><a href="#" data-section="ones_like">ones_like()</a></li>
+            <li><a href="#" data-section="eye">eye()</a></li>
+            <li><a href="#" data-section="identity">identity()</a></li>
+            <li><a href="#" data-section="empty">empty()</a></li>
+            <li><a href="#" data-section="empty_like">empty_like()</a></li>
+            <li><a href="#" data-section="full">full()</a></li>
+            <li><a href="#" data-section="full_like">full_like()</a></li>
+            <li><a href="#" data-section="copy">copy()</a></li>
+            <li><a href="#" data-section="deepcopy">deepcopy()</a></li>
+        </ul>
+    </aside>
 
-<div class="main-content">
+    <div class="main-content">
+        <header>
+            <div class="container">
+                <div class="left-container">
 
-    <header>
-        <div class="container">
-            <div class="left-container">
+                    <div class="big-logo">
+                        <a href="../index.html">
+                            <img src="../media/numxx_logo_plain.svg" alt="NumXX">
+                        </a>
+                    </div>
 
-                <div class="big-logo">
-                    <a href="../index.html">
-                        <img src="../media/numxx_logo_plain.png" alt="NumXX">
-                    </a>
+                    <div class="logo-text-container">
+                        <a href="../index.html">
+                            <img src="../media/NumXX_text_light.svg" alt="NumXX">
+                        </a>
+                        C++ Numerical Computing Library
+                    </div>
+
                 </div>
 
-                <div class="logo-text-container">
-                    <a href="../index.html">
-                        <img src="../media/NumXX_text_light.png" alt="NumXX">
+                <div class="small-logo">
+                    <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                        <img src="../media/github-logo-light.svg" alt="NumXX GitHub">
                     </a>
-                    C++ Numerical Computing Library
                 </div>
-
             </div>
+        </header>
 
-            <div class="small-logo">
-                <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
-                    <img src="../media/github-logo-light.png" alt="NumXX GitHub">
-                </a>
+        <nav>
+            <div class="container">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../getting_started.html">Getting Started</a></li>
+                    <li><a href="../documentation.html">Documentation</a></li>
+                    <li><a href="../examples.html">Examples</a></li>
+                </ul>
             </div>
-        </div>
-    </header>
-
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../getting_started.html">Getting Started</a></li>
-                <li><a href="../documentation.html">Documentation</a></li>
-                <li><a href="../examples.html">Examples</a></li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
 
 
-    <main class="container">
-        <!-- zeros() Section -->
-        <section class="content-section active" id="zeros">
-            <h2>zeros()</h2>
-            <p>Creates an array of a given shape, filled with zeros.</p>
+        <main class="container">
+            <!-- zeros() Section -->
+            <section class="content-section active" id="zeros">
+                <h2>zeros()</h2>
+                <p>Creates an array of a given shape, filled with zeros.</p>
 
-            <h3>Syntax</h3>
-            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
+                <h3>Syntax</h3>
+                <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
 NArray&lt;T&gt; zeros(const Shape&amp; shape);</code></pre>
-            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
+                <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
 NArray&lt;T&gt; zeros(const size_t&amp; size);</code></pre>
 
-            <h3>Parameters</h3>
-            <div class="params-section">
-                <div class="param-item">
-                    <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
-                    <div class="param-description">The data type to be stored.</div>
+                <h3>Parameters</h3>
+                <div class="params-section">
+                    <div class="param-item">
+                        <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
+                        <div class="param-description">The data type to be stored.</div>
+                    </div>
+                    <div class="param-item">
+                        <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                        <div class="param-description">Dimensions of the shape to create.</div>
+                    </div>
+                    <div class="param-item">
+                        <div class="param-name">size : <span class="param-type">size_t</span></div>
+                        <div class="param-description">The size of the array (creates a 1D array).</div>
+                    </div>
                 </div>
-                <div class="param-item">
-                    <div class="param-name">shape : <span class="param-type">Shape</span></div>
-                    <div class="param-description">Dimensions of the shape to create.</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">size : <span class="param-type">size_t</span></div>
-                    <div class="param-description">The size of the array (creates a 1D array).</div>
-                </div>
-            </div>
 
-            <h3>Returns</h3>
-            <p>An NArray object filled with zeros.</p>
+                <h3>Returns</h3>
+                <p>An NArray object filled with zeros.</p>
 
-            <h3>Example</h3>
-            <pre><code class="language-cpp">#include &lt;NumXX.hpp&gt;
+                <h3>Example</h3>
+                <pre><code class="language-cpp">#include &lt;NumXX.hpp&gt;
 
 int main() {
     auto mat = numxx::zeros&lt;float&gt;({2,3});
@@ -128,24 +133,25 @@ int main() {
     std::cout &lt;&lt; arr &lt;&lt; std::endl;
     // &gt;&gt; [0 0 0 0 0]
 }</code></pre>
-        </section>
+            </section>
 
 
-    </main>
+        </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 abdallahsoliman00.</p>
-        </div>
-    </footer>
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 abdallahsoliman00.</p>
+            </div>
+        </footer>
 
-</div>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
-<script src="../scripts/hamburger_menu_script.js"></script>
-<script src="../scripts/rotate_header_script.js"></script>
-<script>const MEDIA_PATH = '../';</script>
-<script src="../scripts/code_blocks_script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+    <script src="../scripts/hamburger_menu_script.js"></script>
+    <script src="../scripts/rotate_header_script.js"></script>
+    <script>const MEDIA_PATH = '../';</script>
+    <script src="../scripts/code_blocks_script.js"></script>
 </body>
+
 </html>

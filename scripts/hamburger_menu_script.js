@@ -1,21 +1,18 @@
 const menuToggle = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
-const closeBtn = document.getElementById('closeBtn');
 const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 const contentSections = document.querySelectorAll('.content-section');
 
-// Open sidebar
+// Toggle sidebar
 menuToggle.addEventListener('click', () => {
-    sidebar.classList.add('open');
-    menuToggle.classList.add('shifted');
+    sidebar.classList.toggle('open');
+    menuToggle.classList.toggle('shifted');
 });
 
 const closeSidebar = () => {
     sidebar.classList.remove('open');
     menuToggle.classList.remove('shifted');
 };
-
-closeBtn.addEventListener('click', closeSidebar);
 
 // Switch content sections
 sidebarLinks.forEach(link => {

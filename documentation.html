@@ -1,118 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>NumXX - Documentation</title>
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body>
 
-<header>
-    <div class="container">
-        <div class="left-container">
+    <header>
+        <div class="container">
+            <div class="left-container">
 
-            <div class="big-logo">
-                <a href="index.html">
-                    <img src="media/numxx_logo_plain.png" alt="NumXX">
-                </a>
+                <div class="big-logo">
+                    <a href="index.html">
+                        <img src="media/numxx_logo_plain.svg" alt="NumXX">
+                    </a>
+                </div>
+
+                <div class="logo-text-container">
+                    <a href="index.html">
+                        <img src="media/NumXX_text_light.svg" alt="NumXX">
+                    </a>
+                    C++ Numerical Computing Library
+                </div>
+
             </div>
 
-            <div class="logo-text-container">
-                <a href="index.html">
-                    <img src="media/NumXX_text_light.png" alt="NumXX">
+            <div class="small-logo">
+                <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                    <img src="media/github-logo-light.svg" alt="NumXX GitHub">
                 </a>
-                C++ Numerical Computing Library
             </div>
-
         </div>
+    </header>
 
-        <div class="small-logo">
-            <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
-                <img src="media/github-logo-light.png" alt="NumXX GitHub">
-            </a>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting_started.html">Getting Started</a></li>
+                <li>
+                    <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+                        Documentation
+                    </a>
+                </li>
+                <li><a href="examples.html">Examples</a></li>
+            </ul>
         </div>
-    </div>
-</header>
+    </nav>
 
-<nav>
-    <div class="container">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="getting_started.html">Getting Started</a></li>
-            <li>
-                <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
-                    Documentation
+    <main class="container">
+        <section id="documentation">
+            <h2 class="section-title">Documentation</h2>
+
+            <div class="docs-grid">
+
+                <a href="docs_mini_pages/lib_structure.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Library Structure</h3>
+                        <p>See how NumXX files are structured.</p>
+                    </div>
                 </a>
-            </li>
-            <li><a href="examples.html">Examples</a></li>
-        </ul>
-    </div>
-</nav>
 
-<main class="container">
-    <section id="documentation">
-        <h2 class="section-title">Documentation</h2>
+                <a href="docs_mini_pages/data_structures.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Data Structures & Containers</h3>
+                        <p>Explore how NumXX stores different data structures including multidimensional arrays,
+                            matrices,
+                            tensors, and other containers used in computations.</p>
+                    </div>
+                </a>
 
-        <div class="docs-grid">
+                <a href="docs_mini_pages/array_creation.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Array Creation APIs</h3>
+                        <p>Learn how to create and initialize arrays using various methods: zeros, ones, ranges, random
+                            values, and custom initialization functions.</p>
+                    </div>
+                </a>
 
-            <a href="docs_mini_pages/lib_structure.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Library Structure</h3>
-                    <p>See how NumXX files are structured.</p>
-                </div>
-            </a>
+                <a href="docs_mini_pages/math_ops.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Mathematical Operations</h3>
+                        <p>Comprehensive guide to element-wise operations, linear algebra routines, and other
+                            mathematical
+                            computations.</p>
+                    </div>
+                </a>
 
-            <a href="docs_mini_pages/data_structures.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Data Structures & Containers</h3>
-                    <p>Explore how NumXX stores different data structures including multidimensional arrays, matrices,
-                        tensors, and other containers used in computations.</p>
-                </div>
-            </a>
+                <a href="docs_mini_pages/file_ops.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>File Operations</h3>
+                        <p>Learn how to NumXX saves and reads different data types to external files.</p>
+                    </div>
+                </a>
 
-            <a href="docs_mini_pages/array_creation.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Array Creation APIs</h3>
-                    <p>Learn how to create and initialize arrays using various methods: zeros, ones, ranges, random
-                        values, and custom initialization functions.</p>
-                </div>
-            </a>
+                <a href="docs_mini_pages/numxx_extras.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>NumXX Extras</h3>
+                        <p>Explore the extra modules available in NumXX. These include Signal Processing,
+                            random and other miscellaneous functionality.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <a href="docs_mini_pages/math_ops.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Mathematical Operations</h3>
-                    <p>Comprehensive guide to element-wise operations, linear algebra routines, and other mathematical
-                        computations.</p>
-                </div>
-            </a>
+    </main>
 
-            <a href="docs_mini_pages/file_ops.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>File Operations</h3>
-                    <p>Learn how to NumXX saves and reads different data types to external files.</p>
-                </div>
-            </a>
-
-            <a href="docs_mini_pages/numxx_extras.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>NumXX Extras</h3>
-                    <p>Explore the extra modules available in NumXX. These include Signal Processing,
-                        random and other miscellaneous functionality.</p>
-                </div>
-            </a>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 abdallahsoliman00.</p>
         </div>
-    </section>
+    </footer>
 
-</main>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2025 abdallahsoliman00.</p>
-    </div>
-</footer>
-
-<script src="scripts/glow_script.js"></script>
-<script src="scripts/rotate_header_script.js"></script>
+    <script src="scripts/glow_script.js"></script>
+    <script src="scripts/rotate_header_script.js"></script>
 </body>
+
 </html>

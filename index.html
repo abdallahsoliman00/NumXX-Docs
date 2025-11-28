@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
@@ -7,123 +8,132 @@
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body>
-<header>
-    <div class="container">
-        <div class="left-container">
+    <header>
+        <div class="container">
+            <div class="left-container">
 
-            <div class="big-logo">
-                <a href="index.html">
-                    <img src="media/numxx_logo_plain.png" alt="NumXX">
-                </a>
+                <div class="big-logo">
+                    <a href="index.html">
+                        <img src="media/numxx_logo_plain.svg" alt="NumXX">
+                    </a>
+                </div>
+
+                <div class="logo-text-container">
+                    <a href="index.html">
+                        <img src="media/NumXX_text_light.svg" alt="NumXX">
+                    </a>
+                    C++ Numerical Computing Library
+                </div>
+
             </div>
 
-            <div class="logo-text-container">
-                <a href="index.html">
-                    <img src="media/NumXX_text_light.png" alt="NumXX">
+            <div class="small-logo">
+                <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                    <img src="media/github-logo-light.svg" alt="NumXX GitHub">
                 </a>
-                C++ Numerical Computing Library
-            </div>
-
-        </div>
-
-        <div class="small-logo">
-            <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
-                <img src="media/github-logo-light.png" alt="NumXX GitHub">
-            </a>
-        </div>
-    </div>
-</header>
-
-
-<nav>
-    <div class="container">
-        <ul>
-            <li>
-                <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
-                    Home
-                </a>
-            </li>
-            <li><a href="getting_started.html">Getting Started</a></li>
-            <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="examples.html">Examples</a></li>
-        </ul>
-    </div>
-</nav>
-
-<main class="container">
-
-    <section class="hero">
-        <div class="hero-content">
-            <div>
-                <h2>Welcome to NumXX</h2>
-                <p>NumXX is an open-source C++ library (inspired by <a href="https://numpy.org/"
-                                                                       target="_blank">NumPy</a>)
-                    designed for high-performance numerical computing. Built with C++17 features, it provides powerful
-                    tools for scientific computing, machine learning, data analysis, and probably more applications that
-                    haven't yet been born.</p>
-                <a href="getting_started.html" class="btn">Get Started</a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="general-structure">
-        <p class="quote">"If NumPy is a Python library built on top of C/C++, why can't we have a library in the
-            language of origin?"<span style="font-weight: normal"> ~ Someone, 2025</span></p><br>
 
-        <p>NumXX is a header-only library inspired by NumPy that hopes to bring about the easy number and array
-            manipulation found in well ... NumPy. NumXX's header-only, vanilla C++ design aims to seamlessly integrate
-            itself within your projects without causing too many issues. The API of this library is very similar to that
-            of NumPy, so if you're looking for function "x" in NumPy, the same function "x" probably also exists in
-            NumXX.</p>
-
-        <p>Although the library is mostly similar to its Python counterpart, this documentation is still necessary as it
-            describes the language specific features and other extras that might not exist there (though those are
-            rare).</p>
-
-        <p>This library isn't currently complete with all NumPy features, but it does contain the core functionality
-            that most people use, so you're most likely covered. However, if more features are still needed, please see
-            if <a href="https://github.com/dpilger26/NumCpp" target="_blank" title="NumCpp GitHub">NumCpp</a> or
-            <a href="https://xtensor.readthedocs.io/en/latest/" target="_blank" title="xtensor docs">xtensor</a>
-            satisfy your needs.</p>
-
-        <p>Happy numerical computing.</p>
-    </section>
-
-    <section>
-        <div class="docs-grid">
-            <a href="getting_started.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Getting Started</h3>
-                    <p>How to use NumXX and integrate it within your projects.</p>
-                </div>
-            </a>
-
-            <a href="documentation.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Documentation</h3>
-                    <p>Understand how NumXX is built and how it can be used.</p>
-                </div>
-            </a>
-
-            <a href="examples.html" class="doc-card">
-                <div class="doc-card-content">
-                    <h3>Examples</h3>
-                    <p>Look through code examples and use cases of NumXX and its features.</p>
-                </div>
-            </a>
+    <nav>
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+                        Home
+                    </a>
+                </li>
+                <li><a href="getting_started.html">Getting Started</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="examples.html">Examples</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-</main>
+    <main class="container">
 
-<footer>
-    <div class="container">
-        <p>&copy; 2025 abdallahsoliman00.</p>
-    </div>
-</footer>
+        <section class="hero">
+            <div class="hero-content">
+                <div>
+                    <h2>Welcome to NumXX</h2>
+                    <p>NumXX is an open-source C++ library (inspired by <a href="https://numpy.org/"
+                            target="_blank">NumPy</a>)
+                        designed for high-performance numerical computing. Built with C++17 features, it provides
+                        powerful
+                        tools for scientific computing, machine learning, data analysis, and probably more applications
+                        that
+                        haven't yet been born.</p>
+                    <a href="getting_started.html" class="btn">Get Started</a>
+                </div>
+            </div>
+        </section>
 
-<script src="scripts/glow_script.js"></script>
-<script src="scripts/rotate_header_script.js"></script>
+        <section class="general-structure">
+            <p class="quote">"If NumPy is a Python library built on top of C/C++, why can't we have a library in the
+                language of origin?"<span style="font-weight: normal"> ~ Someone, 2025</span></p><br>
+
+            <p>NumXX is a header-only library inspired by NumPy that hopes to bring about the easy number and array
+                manipulation found in well ... NumPy. NumXX's header-only, vanilla C++ design aims to seamlessly
+                integrate
+                itself within your projects without causing too many issues. The API of this library is very similar to
+                that
+                of NumPy, so if you're looking for function "x" in NumPy, the same function "x" probably also exists in
+                NumXX.</p>
+
+            <p>Although the library is mostly similar to its Python counterpart, this documentation is still necessary
+                as it
+                describes the language specific features and other extras that might not exist there (though those are
+                rare).</p>
+
+            <p>This library isn't currently complete with all NumPy features, but it does contain the core functionality
+                that most people use, so you're most likely covered. However, if more features are still needed, please
+                see
+                if <a href="https://github.com/dpilger26/NumCpp" target="_blank" title="NumCpp GitHub">NumCpp</a> or
+                <a href="https://xtensor.readthedocs.io/en/latest/" target="_blank" title="xtensor docs">xtensor</a>
+                satisfy your needs.
+            </p>
+
+            <p>Happy numerical computing.</p>
+        </section>
+
+        <section>
+            <div class="docs-grid">
+                <a href="getting_started.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Getting Started</h3>
+                        <p>How to use NumXX and integrate it within your projects.</p>
+                    </div>
+                </a>
+
+                <a href="documentation.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Documentation</h3>
+                        <p>Understand how NumXX is built and how it can be used.</p>
+                    </div>
+                </a>
+
+                <a href="examples.html" class="doc-card">
+                    <div class="doc-card-content">
+                        <h3>Examples</h3>
+                        <p>Look through code examples and use cases of NumXX and its features.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 abdallahsoliman00.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/glow_script.js"></script>
+    <script src="scripts/rotate_header_script.js"></script>
 </body>
+
 </html>

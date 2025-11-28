@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-color: #3a3f4b #1a1d24;
 }
 
 body {
@@ -96,7 +97,8 @@ nav a:hover {
 }
 
 .hero {
-    background: #1e2125; /* Dark background */
+    background: #1e2125;
+    /* Dark background */
     padding: 3rem 0;
     margin: 2rem 0;
     border-radius: 8px;
@@ -138,11 +140,9 @@ nav a:hover {
     top: 0;
     left: 0;
     border-radius: inherit;
-    background: radial-gradient(
-            800px circle at 0 0,
+    background: radial-gradient(800px circle at 0 0,
             rgba(59, 248, 251, 0.15),
-            transparent 40%
-    );
+            transparent 40%);
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     pointer-events: none;

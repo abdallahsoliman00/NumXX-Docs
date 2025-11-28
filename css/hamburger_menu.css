@@ -1,24 +1,21 @@
 /* Hamburger Menu Button */
 .menu-toggle {
     position: fixed;
-    top: 20px;
-    left: 0;
-    transform: none;
+    top: 0;
+    left: 5mm;
     z-index: 1001;
-    background: #2c3e50;
+    background: rgba(30, 33, 37, 0);
     border: none;
     padding: 20px 10px;
     cursor: pointer;
-    border-radius: 0 8px 8px 0;
     transition: background 0.3s, padding-left 0.3s, left 0.3s ease;
     display: flex;
+    align-items: center;
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.menu-toggle.shifted {
-    left: -100px;
+    width: 45px;
+    height: 55px;
 }
 
 .menu-toggle span {
@@ -28,10 +25,13 @@
     background: white;
     transition: all 0.3s;
     border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -12.5px;
 }
 
 .menu-toggle:hover {
-    background: #34495e;
     padding-left: 15px;
 }
 
@@ -39,6 +39,31 @@
     width: 30px;
 }
 
+.menu-toggle span:nth-child(1) {
+    transform: translateY(-8px);
+}
+
+.menu-toggle span:nth-child(2) {
+    transform: translateY(0);
+}
+
+.menu-toggle span:nth-child(3) {
+    transform: translateY(8px);
+}
+
+/* X transformation when sidebar is open */
+.menu-toggle.shifted span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.shifted span:nth-child(2) {
+    opacity: 0;
+    transform: translateY(0);
+}
+
+.menu-toggle.shifted span:nth-child(3) {
+    transform: rotate(-45deg);
+}
 
 /* Sidebar Styles */
 .sidebar {
@@ -76,26 +101,12 @@
     transition: margin-left 0.3s ease;
 }
 
-.sidebar.open ~ .main-content {
+.sidebar.open~.main-content {
     margin-left: 280px;
 }
 
-.sidebar.open ~ .main-content .right-logo {
+.sidebar.open~.main-content .right-logo {
     margin-left: -280px;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .sidebar-menu {
@@ -165,82 +176,9 @@
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.code-container {
-    position: relative;
-    margin: 1rem 0;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-pre {
-    position: relative;
-    background: #282c34;
-}
-
-pre code {
-    font-size: 14px;
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0);
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-}
-
-.copy-btn:hover {
-    background: rgba(255, 255, 255, 0.13);
-}
-
-.copy-btn img {
-    width: 15px;
-    height: auto;
-    display: block;
-}
-
-
-/* Copy notification popup */
-.copy-notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #282c34;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    font-size: 0.9rem;
-    font-weight: 500;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
-}
-
-.copy-notification.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-* {
-    scrollbar-color: #3a3f4b #1a1d24;
 }
