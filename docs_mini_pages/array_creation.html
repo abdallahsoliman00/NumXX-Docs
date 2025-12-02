@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>NumXX - Documentation</title>
+    <link rel="icon" href="../media/numxx_icon.svg">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -27,20 +28,20 @@
             <h3>Array Creation APIs</h3>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="#" data-section="linspace" class="active">linspace()</a></li>
-            <li><a href="#" data-section="arange">arange()</a></li>
-            <li><a href="#" data-section="zeros">zeros()</a></li>
-            <li><a href="#" data-section="zeros_like">zeros_like()</a></li>
-            <li><a href="#" data-section="ones">ones()</a></li>
-            <li><a href="#" data-section="ones_like">ones_like()</a></li>
-            <li><a href="#" data-section="eye">eye()</a></li>
-            <li><a href="#" data-section="identity">identity()</a></li>
-            <li><a href="#" data-section="empty">empty()</a></li>
-            <li><a href="#" data-section="empty_like">empty_like()</a></li>
-            <li><a href="#" data-section="full">full()</a></li>
-            <li><a href="#" data-section="full_like">full_like()</a></li>
-            <li><a href="#" data-section="copy">copy()</a></li>
-            <li><a href="#" data-section="deepcopy">deepcopy()</a></li>
+            <li><a href="#" data-section="linspace" class="active">numxx::linspace()</a></li>
+            <li><a href="#" data-section="arange">numxx::arange()</a></li>
+            <li><a href="#" data-section="zeros">numxx::zeros()</a></li>
+            <li><a href="#" data-section="zeros_like">numxx::zeros_like()</a></li>
+            <li><a href="#" data-section="ones">numxx::ones()</a></li>
+            <li><a href="#" data-section="ones_like">numxx::ones_like()</a></li>
+            <li><a href="#" data-section="eye">numxx::eye()</a></li>
+            <li><a href="#" data-section="identity">numxx::identity()</a></li>
+            <li><a href="#" data-section="empty">numxx::empty()</a></li>
+            <li><a href="#" data-section="empty_like">numxx::empty_like()</a></li>
+            <li><a href="#" data-section="full">numxx::full()</a></li>
+            <li><a href="#" data-section="full_like">numxx::full_like()</a></li>
+            <li><a href="#" data-section="copy">numxx::copy()</a></li>
+            <li><a href="#" data-section="deepcopy">numxx::deepcopy()</a></li>
         </ul>
     </aside>
 
@@ -92,12 +93,12 @@
         <main class="container">
             <!-- zeros() Section -->
             <section class="content-section active" id="zeros">
-                <h2>zeros()</h2>
-                <p>Creates an array of a given shape, filled with zeros.</p>
+                <h2>numxx::&lt;T&gt;zeros()</h2>
+                <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
 
                 <h3>Syntax</h3>
                 <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
-NArray&lt;T&gt; zeros(const Shape&amp; shape);</code></pre>
+NArray&lt;T&gt; zeros(Shape shape);</code></pre>
                 <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
 NArray&lt;T&gt; zeros(const size_t&amp; size);</code></pre>
 
@@ -109,7 +110,8 @@ NArray&lt;T&gt; zeros(const size_t&amp; size);</code></pre>
                     </div>
                     <div class="param-item">
                         <div class="param-name">shape : <span class="param-type">Shape</span></div>
-                        <div class="param-description">Dimensions of the shape to create.</div>
+                        <div class="param-description">Dimensions of the shape to create. (Creates an N-Dimensional
+                            array)</div>
                     </div>
                     <div class="param-item">
                         <div class="param-name">size : <span class="param-type">size_t</span></div>
@@ -118,10 +120,20 @@ NArray&lt;T&gt; zeros(const size_t&amp; size);</code></pre>
                 </div>
 
                 <h3>Returns</h3>
-                <p>An NArray object filled with zeros.</p>
+                <div class="params-section">
+                    <div class="param-item">
+                        <div class="param-name">NArray&lt;T&gt;</div>
+                        <div class="param-description">An NArray object of type T filled with zeros or the default
+                            constructed value of T.</div>
+                    </div>
+                </div>
+
+                <h3>Time Complexity</h3>
+                <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
 
                 <h3>Example</h3>
-                <pre><code class="language-cpp">#include &lt;NumXX.hpp&gt;
+                <p>Inintialise an NArray of arbitrary shape:</p>
+                <pre><code class="language-cpp">#include "NumXX.hpp"
 
 int main() {
     auto mat = numxx::zeros&lt;float&gt;({2,3});
@@ -132,6 +144,29 @@ int main() {
     //     [0 0 0]]
     std::cout &lt;&lt; arr &lt;&lt; std::endl;
     // &gt;&gt; [0 0 0 0 0]
+}</code></pre>
+                <p>It also works for custom types:</p>
+                <pre><code class="language-cpp">#include "NumXX.hpp"
+
+// Custom Type
+struct MyType {
+    std::string str;
+
+    MyType() : str("default") {}
+    MyType(std::string s) : str(s) {}
+
+    // Needs a &lt;&lt; print overload for NArray to print it
+    friend std::ostream&amp; operator&lt;&lt; (std::ostream&amp; os, const MyType&amp; obj) {
+        os &lt;&lt; obj.str;
+        return os;
+    }
+};
+
+int main() {
+    // Calls the default constructor of MyType
+    auto a = numxx::zeros&lt;MyType&gt;(3);
+    std::cout &lt;&lt; a;
+    // &gt;&gt; [default default default]
 }</code></pre>
             </section>
 

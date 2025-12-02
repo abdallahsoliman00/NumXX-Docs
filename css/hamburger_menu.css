@@ -97,8 +97,33 @@
     font-size: 1.2rem;
 }
 
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    transition: max-width 0.3s ease;
+}
+
+header .container {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: max-width 0.3s ease;
+}
+
 .main-content {
     transition: margin-left 0.3s ease;
+}
+
+.sidebar.open~.main-content .container {
+    max-width: 90%;
+}
+
+.sidebar.open~.main-content header .container {
+    max-width: 100%;
 }
 
 .sidebar.open~.main-content {

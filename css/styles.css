@@ -29,8 +29,14 @@ header {
     height: auto;
 }
 
-header .container {
+.container {
     max-width: 80%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+header .container {
+    max-width: 95%;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -89,12 +95,6 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-
-.container {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
 
 .hero {
     background: #1e2125;
@@ -165,8 +165,9 @@ nav a:hover {
     transition: all 0.15s;
     text-decoration: none;
     color: inherit;
-    border: 3px solid transparent;
+    /* border: 3px solid transparent; */
     min-height: 200px;
+    padding: 1px;
 }
 
 .doc-card:hover {
@@ -198,7 +199,6 @@ nav a:hover {
     color: #aaa;
     line-height: 1.6;
 }
-
 
 .btn {
     display: inline-block;
@@ -304,6 +304,25 @@ a:hover {
     background: rgba(40, 44, 52, 0.53);
     border-radius: 5px;
     text-align: center;
-    width: 20cm;
+    max-width: 20cm;
     font-weight: bold;
+}
+
+.inline-code {
+    font-family: monospace;
+    font-size: 1rem;
+    color: #ABB2BF;
+    background-color: #282C34;
+    border-radius: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.quick-description .title {
+    color: #adb4e4;
+    font-weight: bold;
+}
+
+.quick-description .description {
+    padding-left: 1rem;
 }
