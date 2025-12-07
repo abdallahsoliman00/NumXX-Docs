@@ -281,7 +281,11 @@ a:hover {
     color: #e2ebf3;
 }
 
-.general-structure h1,
+.general-structure h1 {
+    color: #82b1fb;
+    margin-bottom: 0.5rem;
+}
+
 .general-structure h2 {
     color: #82b1fb;
     margin-top: 1.5rem;
