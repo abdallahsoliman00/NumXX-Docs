@@ -1,69 +1,69 @@
 // Enhanced glow effect with spillover for hero and doc-cards
-document.addEventListener('DOMContentLoaded', function() {
-    const glowElements = document.querySelectorAll('.hero, .doc-card, .section-title');
+document.addEventListener('DOMContentLoaded', function () {
+  const glowElements = document.querySelectorAll('.hero, .doc-card, .section-title, .btn-bg');
 
-    // Track mouse position globally
-    let globalMouseX = 0;
-    let globalMouseY = 0;
+  // Track mouse position globally
+  let globalMouseX = 0;
+  let globalMouseY = 0;
 
-    document.addEventListener('mousemove', function(event) {
-        globalMouseX = event.clientX;
-        globalMouseY = event.clientY;
-    });
+  document.addEventListener('mousemove', function (event) {
+    globalMouseX = event.clientX;
+    globalMouseY = event.clientY;
+  });
 
-    // Apply glow effect to all elements
-    function updateGlows() {
-        glowElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
+  // Apply glow effect to all elements
+  function updateGlows() {
+    glowElements.forEach(element => {
+      const rect = element.getBoundingClientRect();
 
-            // Calculate position relative to this element
-            const x = globalMouseX - rect.left;
-            const y = globalMouseY - rect.top;
+      // Calculate position relative to this element
+      const x = globalMouseX - rect.left;
+      const y = globalMouseY - rect.top;
 
-            // Calculate distance from mouse to element center
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const distanceFromCenter = Math.sqrt(
-                Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
-            );
+      // Calculate distance from mouse to element center
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const distanceFromCenter = Math.sqrt(
+        Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
+      );
 
-            // Define glow radius (affects nearby elements)
-            const glowRadius = 400;
+      // Define glow radius (affects nearby elements)
+      const glowRadius = 400;
 
-            // Check if mouse is over this element or nearby
-            const isOver = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
-            const isNearby = distanceFromCenter < glowRadius;
+      // Check if mouse is over this element or nearby
+      const isOver = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
+      const isNearby = distanceFromCenter < glowRadius;
 
-            if (isOver || isNearby) {
-              const dx = x - centerX;
-              const dy = y - centerY;
-              const distance = Math.sqrt(dx*dx + dy*dy);
-              const opacity = Math.max(0, 1 - (distance / glowRadius));
+      if (isOver || isNearby) {
+        const dx = x - centerX;
+        const dy = y - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const opacity = Math.max(0, 1 - (distance / glowRadius));
 
-              // section-title
-              if (element.classList.contains('section-title')) {
-                  element.style.textShadow = `
+        // section-title
+        if (element.classList.contains('section-title')) {
+          element.style.textShadow = `
                   ${dx * 0.05}px ${dy * 0.05}px 25px rgba(59, 248, 251, ${0.5 * opacity}),
                   0 0 35px rgba(59, 248, 251, ${0.4 * opacity})`;
-              // doc-card
-              } else if(element.classList.contains('doc-card')) {
-                element.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(59, 248, 251, ${0.5 * opacity}), transparent 40%)`;
-              // hero
-              } else {
-                element.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(59, 248, 251, ${0.15 * opacity}), transparent 40%)`;
-              }
-            } else {
-              if (element.classList.contains('section-title')) {
-                element.style.textShadow = 'none';
-              } else {
-                element.style.background = 'none';
-              }
-            }
+          // hero
+        } else if (element.classList.contains('hero')) {
+          element.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(59, 248, 251, ${0.16 * opacity}), transparent 40%)`;
+          // doc-card
+        } else {
+          element.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(59, 248, 251, ${0.5 * opacity}), transparent 40%)`;
+        }
+      } else {
+        if (element.classList.contains('section-title')) {
+          element.style.textShadow = 'none';
+        } else {
+          element.style.background = 'none';
+        }
+      }
 
-        });
+    });
 
-        requestAnimationFrame(updateGlows);
-    }
+    requestAnimationFrame(updateGlows);
+  }
 
-    updateGlows();
+  updateGlows();
 });

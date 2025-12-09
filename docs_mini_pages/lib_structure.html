@@ -70,12 +70,12 @@
             </p>
             <pre><code class="language-cpp">/* === Base namespace === */
 namespace numxx {
-    /* === Core functions === */
+    /* Core functions */
     zeros();
     ones();
     ...
 
-    /* === sub-namespaces === */
+    /* === Sub-namespaces === */
     namespace random {
         randn();
         randint();
@@ -126,78 +126,68 @@ namespace numxx {
                 brief description of each file and its contents.</p>
             <div class="quick-description">
                 <div class="title">Containers:</div>
-                <div class="description">
-                    <p>
-                        This exisits within the base <span class="inline-code">numxx</span> namespace and contains the
-                        core
-                        NumXX types: <span class="inline-code">NArray</span>, <span class="inline-code">Matrix</span>,
-                        and
-                        <span class="inline-code">Shape</span>. These are the
-                        building blocks used to build the rest of the
-                        library.
-                    </p>
-                </div>
+                <p>
+                    This exisits within the base <span class="inline-code">numxx</span> namespace and contains the
+                    core
+                    NumXX types: <span class="inline-code">NArray</span>, <span class="inline-code">Matrix</span>,
+                    and
+                    <span class="inline-code">Shape</span>. These are the
+                    building blocks used to build the rest of the
+                    library.
+                </p>
             </div>
 
             <div class="quick-description">
                 <div class="title">Core:</div>
-                <div class="description">
-                    <p>
-                        Contains all the core NumXX functions that exist within the base layer of the
-                        <span class="inline-code">numxx</span> namespace. Examples include
-                        <span class="inline-code">zeros()</span>, <span class="inline-code">ones()</span>,
-                        <span class="inline-code">sin()</span>, <span class="inline-code">cos()</span>,
-                        <span class="inline-code">tan()</span>, <span class="inline-code">max()</span>,
-                        <span class="inline-code">min()</span>, etc...
-                        <br>
-                    </p>
-                    <p>
-                        Within the Core file, there also exists an implementation of a custom <span
-                            class="inline-code">complex</span> class as well as a file containing all the constants.
-                        A custom complex type is required because <span class="inline-code">std::complex</span> does not
-                        support arithmetic between
-                        complex numbers with different underlying types.
-                        For example, an expression such as
-                        <span class="inline-code">std::complex&lt;int&gt;(1, 1) + std::complex&lt;float&gt;(1, 1)</span>
-                        is not allowed, whereas the equivalent operation using
-                        <span class="inline-code">numxx::complex</span> is fully supported.
-                        <br>
-                        This type flexibility is a core requirement for NumXX, making a custom
-                        <span class="inline-code">complex</span> implementation necessary.
-                    </p>
-                </div>
+                <p>
+                    Contains all the core NumXX functions that exist within the base layer of the
+                    <span class="inline-code">numxx</span> namespace. Examples include
+                    <span class="inline-code">zeros()</span>, <span class="inline-code">ones()</span>,
+                    <span class="inline-code">sin()</span>, <span class="inline-code">cos()</span>,
+                    <span class="inline-code">tan()</span>, <span class="inline-code">max()</span>,
+                    <span class="inline-code">min()</span>, etc...
+                    <br>
+                </p>
+                <p>
+                    Within the Core file, there also exists an implementation of a custom <span
+                        class="inline-code">complex</span> class as well as a file containing all the constants.
+                    A custom complex type is required because <span class="inline-code">std::complex</span> does not
+                    support arithmetic between
+                    complex numbers with different underlying types.
+                    For example, an expression such as
+                    <span class="inline-code">std::complex&lt;int&gt;(1, 1) + std::complex&lt;float&gt;(1, 1)</span>
+                    is not allowed, whereas the equivalent operation using
+                    <span class="inline-code">numxx::complex</span> is fully supported.
+                    <br>
+                    This type flexibility is a core requirement for NumXX, making a custom
+                    <span class="inline-code">complex</span> implementation necessary.
+                </p>
             </div>
 
             <div class="quick-description">
                 <div class="title">Utils:</div>
-                <div class="description">
-                    <p>
-                        As the name suggests, this is a folder where all utility functions exist; any utility function
-                        used anywhere in the library exists here. These functions are all parts of the <span
-                            class="inline-code">numxx::util</span> namespace, with the exception of the custom error
-                        classes that exist within <span class="inline-code">numxx::error</span>.
-                    </p>
-                </div>
+                <p>
+                    As the name suggests, this is a folder where all utility functions exist; any utility function
+                    used anywhere in the library exists here. These functions are all parts of the <span
+                        class="inline-code">numxx::util</span> namespace, with the exception of the custom error
+                    classes that exist within <span class="inline-code">numxx::error</span>.
+                </p>
 
                 <div class="title">NumXX.hpp:</div>
-                <div class="description">
-                    <p>
-                        This is simply the header file that gets included in the main program.
-                    </p>
-                </div>
+                <p>
+                    This is simply the header file that gets included in the main program.
+                </p>
 
                 <div class="title">Other:</div>
-                <div class="description">
-                    <p>
-                        Each file contains a set of functions exclusive to a <span class="inline-code">numxx</span>
-                        sub-namespace. For example, the file FFT.hpp hold functions defined within <span
-                            class="inline-code">numxx::fft</span>. A similar pattern is followed with the other files.
-                    </p>
-                    <p>
-                        The functions included in these files are not essential to core NumXX functionality, hence the
-                        separate namespaces.
-                    </p>
-                </div>
+                <p>
+                    Each file contains a set of functions exclusive to a <span class="inline-code">numxx</span>
+                    sub-namespace. For example, the file FFT.hpp hold functions defined within <span
+                        class="inline-code">numxx::fft</span>. A similar pattern is followed with the other files.
+                </p>
+                <p>
+                    The functions included in these files are not essential to core NumXX functionality, hence the
+                    separate namespaces.
+                </p>
             </div>
 
         </section>

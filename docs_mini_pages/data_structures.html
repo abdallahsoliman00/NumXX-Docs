@@ -6,6 +6,9 @@
     <title>NumXX - Documentation</title>
     <link rel="icon" href="../media/numxx_icon.svg">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/code_blocks.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 
 </head>
 
@@ -54,25 +57,178 @@
         <section class="general-structure">
             <h1 class="section-title">Data Structures and Containers</h1>
             <p>
-                In this section, an overview of the three fundamentals NumXX types will be given. The types in question
-                are <span class="inline-code">Shape</span>, <span class="inline-code">NArray</span> and <span
-                    class="inline-code">Matrix</span>.
+                In this section, an overview of the three fundamental NumXX types will be given. These are the building
+                blocks used to create NumXX. The types in question are <span class="inline-code">Shape</span>,
+                <span class="inline-code">NArray</span> and <span class="inline-code">Matrix</span>.
             </p>
+            <p>After reading this section, a more detailed documentation of each type can be explored.</p>
 
             <h2>Shape</h2>
+            <pre><code class="language-cpp">struct Shape {
+    std::vector&lt;size_t&gt; dimensions;
+}</code></pre>
             <p>
-
+                The <span class="inline-code">Shape</span> struct is a lightweight wrapper around
+                <span class="inline-code">std::vector&lt;size_t&gt;</span> that stores the dimensional structure of
+                numerical arrays. It determines how a contiguous memory block is interpreted and accessed as a
+                multi-dimensional array.
             </p>
+
+            <div class="quick-description">
+                <div class="title">Member Variables:</div>
+                <div class="params-section">
+                    <div class="param-item">
+                        <div class="param-name">dimensions : <span class="param-type">std::vector&lt;size_t&gt;</span>
+                        </div>
+                        <div class="param-description">A vector that holds
+                            the size of each dimension of the array. For example, a shape of <span class="inline-code">
+                                (3,4)</span> represents a 3x4 matrix.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-description">
+                <div class="title">Purpose:</div>
+                <div class="description">
+                    <p>
+                        <span class="inline-code">Shape</span> provides the metadata needed to interpret flat memory as
+                        multi-dimensional data. It handles dimension queries, stride calculations, and shape
+                        transformations (transpose, flatten, reshape) that are essential for array operations.
+                    </p>
+                </div>
+            </div>
+
+
+
+            <h2>NArray</h2>
+            <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+class NArray {
+    std::shared_ptr&lt;dtype&gt; _data_ptr;
+    Shape _shape;
+}</code></pre>
+            <p>
+                The <span class="inline-code">NArray</span> class is the primary container for N-dimensional arrays in
+                NumXX. It combines shape information with actual data storage to provide a flexible, efficient array
+                type similar to NumPy's ndarray.
+            </p>
+
+            <div class="quick-description">
+                <div class="title">Member Variables:</div>
+                <div class="params-section">
+                    <div class="param-item">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span>
+                            </div>
+                            <div class="param-description">Is the data type to be stored.</div>
+                        </div>
+                        <div class="param-name">_data_ptr : <span class="param-type">std::shared_ptr&lt;dtype&gt;</span>
+                        </div>
+                        <div class="param-description">A shared pointer to
+                            the contiguous memory block holding the array data. The use of shared pointers enables
+                            memory
+                            sharing between multiple NArray instances.</div>
+                    </div>
+                    <div class="param-item">
+                        <div class="param-name">_shape : <span class="param-type">Shape</span>
+                        </div>
+                        <div class="param-description">A Shape object that defines the dimensional
+                            structure of the array.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-description">
+                <div class="title">Purpose:</div>
+                <div class="description">
+                    <p>
+                        <span class="inline-code">NArray</span> serves as the workhorse container for numerical
+                        computations. Its shared pointer design allows multiple NArrays to reference the same
+                        underlying data, enabling efficient slicing, views, and memory-safe operations without
+                        unnecessary copying. This makes operations like array slicing and reshaping both fast and
+                        memory-efficient.
+                    </p>
+                </div>
+            </div>
+
+
+
+            <h2>Matrix</h2>
+            <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+class Matrix final : public NArray&lt;dtype&gt; {
+    using NArray&lt;dtype&gt;::_data_ptr;
+    using NArray&lt;dtype&gt;::_shape;
+}</code></pre>
+            <p>
+                The <span class="inline-code">Matrix</span> class is a specialized form of <span
+                    class="inline-code">NArray</span> that restricts dimensionality to a maximum of two dimensions. It
+                inherits from <span class="inline-code">NArray</span> and adds matrix-specific functionality.
+            </p>
+
+            <div class="quick-description">
+                <div class="title">Member Variables:</div>
+                <div class="description">
+                    <p>
+                        <span class="inline-code">Matrix</span> inherits the same member variables from
+                        <span class="inline-code">NArray</span>:
+                    </p>
+                </div>
+                <div class="params-section">
+                    <div class="param-item">
+                        <div class="param-name">dtype : <span class="param-type">(defaults to double)</span>
+                        </div>
+                        <div class="param-description">Is the data type to be stored.</div>
+                    </div>
+                    <div class="param-item">
+                        <div class="param-name">_data_ptr : <span class="param-type">std::shared_ptr&lt;dtype&gt;</span>
+                        </div>
+                        <div class="param-description">Shared pointer to
+                            the contiguous memory block.</div>
+                    </div>
+                    <div class="param-item">
+                        <div class="param-name">_shape : <span class="param-type">Shape</span>
+                        </div>
+                        <div class="param-description">Shape object, constrained to have at most 2
+                            dimensions. 1D shapes are automatically converted to row vectors with shape
+                            <span class="inline-code">(1,n)</span>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-description">
+                <div class="title">Purpose:</div>
+                <div class="description">
+                    <p>
+                        <span class="inline-code">Matrix</span> provides a type-safe interface for linear algebra
+                        operations. The key distinction from <span class="inline-code">NArray</span> is its
+                        multiplication behavior: the <span class="inline-code">operator*</span> performs matrix
+                        multiplication (matmul) rather than element-wise multiplication. This makes matrix algebra more
+                        intuitive and aligns with mathematical conventions. Despite being a specialized type,
+                        <span class="inline-code">Matrix</span> maintains full compatibility with
+                        <span class="inline-code">NArray</span> operations through inheritance.
+                    </p>
+                </div>
+            </div>
+
+            <h2>More</h2>
+
+            <p>For a more comprehensive API documentation, please navigate using the buttons below.</p>
+
+            <div class="button-group">
+                <div class="btn-bg"><a href="container_api_docs.html#shape" class="btn-small">Shape</a></div>
+                <div class="btn-bg"><a href="container_api_docs.html#narray" class="btn-small">NArray</a></div>
+                <div class="btn-bg"><a href="container_api_docs.html#matrix" class="btn-small">Matrix</a></div>
+            </div>
 
         </section>
     </div>
 
 
-    <!-- <footer>
+    <footer>
         <div class="container">
             <p>&copy; 2025 abdallahsoliman00.</p>
         </div>
-    </footer> -->
+    </footer>
 
 
     <script src="../scripts/rotate_header_script.js"></script>

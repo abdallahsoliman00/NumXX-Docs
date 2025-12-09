@@ -132,22 +132,6 @@ nav a:hover {
     font-size: 1.1rem;
 }
 
-.doc-card::before {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: inherit;
-    background: radial-gradient(800px circle at 0 0,
-            rgba(59, 248, 251, 0.15),
-            transparent 40%);
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    pointer-events: none;
-}
-
 .docs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -166,8 +150,11 @@ nav a:hover {
     text-decoration: none;
     color: inherit;
     /* border: 3px solid transparent; */
+    padding: 1.5px;
+}
+
+.docs-grid .doc-card {
     min-height: 200px;
-    padding: 1px;
 }
 
 .doc-card:hover {
@@ -217,6 +204,38 @@ nav a:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(59, 248, 251, 0.4);
     color: white;
+}
+
+.btn-bg {
+    border-radius: 8px;
+    transition: transform 0.3s;
+    padding: 2px;
+}
+
+.btn-bg:hover {
+    transform: scale(0.9);
+}
+
+.btn-small {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 0.75rem 0.6rem;
+    background: #1e2125;
+    color: #82b1fb;
+    text-decoration: none;
+    border-radius: inherit;
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+    min-width: 8rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    justify-content: center;
 }
 
 footer {
@@ -325,8 +344,4 @@ a:hover {
 .quick-description .title {
     color: #adb4e4;
     font-weight: bold;
-}
-
-.quick-description .description {
-    padding-left: 1rem;
 }
