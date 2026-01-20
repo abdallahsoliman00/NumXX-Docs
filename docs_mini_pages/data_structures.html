@@ -128,11 +128,12 @@ class NArray {
                 <div class="title">Member Variables:</div>
                 <div class="params-section">
                     <div class="param-item">
-                        <div class="param-item">
-                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span>
-                            </div>
-                            <div class="param-description">Is the data type to be stored.</div>
+                        <div class="param-name">dtype : <span class="param-type">(defaults to double)</span>
                         </div>
+                        <div class="param-description">Is the data type to be stored.</div>
+                    </div>
+
+                    <div class="param-item">
                         <div class="param-name">_data_ptr : <span class="param-type">std::shared_ptr&lt;dtype&gt;</span>
                         </div>
                         <div class="param-description">A shared pointer to
@@ -140,6 +141,7 @@ class NArray {
                             memory
                             sharing between multiple NArray instances.</div>
                     </div>
+
                     <div class="param-item">
                         <div class="param-name">_shape : <span class="param-type">Shape</span>
                         </div>
@@ -227,9 +229,9 @@ class Matrix final : public NArray&lt;dtype&gt; {
             <p>For a more comprehensive API documentation, please navigate using the buttons below.</p>
 
             <div class="button-group">
-                <div class="btn-bg"><a href="container_api_docs.html#shape" class="btn-small">Shape</a></div>
-                <div class="btn-bg"><a href="container_api_docs.html#narray" class="btn-small">NArray</a></div>
-                <div class="btn-bg"><a href="container_api_docs.html#matrix" class="btn-small">Matrix</a></div>
+                <div class="btn-bg"><a href="containers_api.html#shape" class="btn-small">Shape</a></div>
+                <div class="btn-bg"><a href="containers_api.html#narray" class="btn-small">NArray</a></div>
+                <div class="btn-bg"><a href="containers_api.html#matrix" class="btn-small">Matrix</a></div>
             </div>
 
         </section>

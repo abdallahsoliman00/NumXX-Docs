@@ -3,6 +3,10 @@ const sidebar = document.getElementById('sidebar');
 const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 const contentSections = document.querySelectorAll('.content-section');
 
+// Open sidebar by default
+sidebar.classList.add('open');
+menuToggle.classList.add('shifted');
+
 // Toggle sidebar
 menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('open');

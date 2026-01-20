@@ -1,0 +1,57 @@
+numxx::linspace:
+  short_name: linspace
+  description: "Creates an array of evenly spaced values within a given interval."
+  syntax:
+  - "NArray<double> linspace(const float start, const float stop, const size_t count, const bool endpoint = true);"
+  params:
+    - start:
+      - float
+      - "The first number in the array."
+    - stop:
+      - float
+      - "The upper bound of the array."
+    - count:
+      - size_t
+      - "The number of elements in the array."
+    - endpoint:
+      - bool (defaults to true)
+      - "Spcifies whether on not the value of stop should be included as the last element of the array. Setting endpoint to true makes stop the last element of the array."
+  returns:
+    - NArray<double>:
+      - "An NArray object of type double with equally spaced elements starting at start and ending at stop.\nIf endpoint is set to true, the elements are spaced such that stop is the final element of the array."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create an NArray of 11 points from 0 to 1:"
+    - "linspace.cpp"
+
+numxx::zeros<T>:
+  short_name: zeros
+  description: "Creates an array of a given shape and calls the default constructor for all elements."
+  syntax:
+    - "template <typename T = double, typename = std::enable_if_t<std::is_arithmetic_v<T>>>\nNArray<T> zeros(Shape shape);"
+    - "template <typename T = double, typename = std::enable_if_t<std::is_arithmetic_v<T>>>\nNArray<T> zeros(const size_t size);"
+  params:
+    - T:
+      - (defaults to double)
+      - "The data type to be stored."
+    - shape:
+      - Shape
+      - "Dimensions of the shape to create. (Creates an N-Dimensional array)"
+    - size:
+      - size_t
+      -  "The size of the array (creates a 1D array)."
+  returns:
+    - NArray<double>:
+      - "An NArray object of type T filled with zeros or the default constructed value of T."
+    - int:
+      - "description and what not."
+  time_comp:
+    - O(n)
+  examples:
+    - "Initialise an NArray of arbitrary shape:"
+    - "zeros1.cpp"
+    - "It also works for custom types:"
+    - "zeros2.cpp"
+
+ 
