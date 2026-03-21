@@ -1,3 +1,4 @@
 .idea/
 test.*
 .vscode/
+__pycache__/
