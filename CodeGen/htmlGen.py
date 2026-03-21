@@ -1,172 +1,184 @@
 from __future__ import annotations
 
+import subprocess
 import yaml
-import html
+from functools import lru_cache
+
+from .GenSections import Section
+from .utils import InitError, indent
 
 
-def indent(string: str, no_indents = 1, indent_spaces = 4):
-    """Indents an entie block of text by a fixed amount.
-
-    Parameters
-    ----------
-    string : str
-        The text to indent.
-    time : int
-        The number of times the text should be indented.
-    indent_spaces : int
-        The number of spaces (" ") each indent consists of.
-    """
-    spaces = ' ' * no_indents * indent_spaces
-    return '\n'.join([spaces + i for i in string.split('\n')])
+@lru_cache
+def parse_yaml(filename: str = r"CodeGen\functions.yaml") -> dict:
+    with open(filename, "r") as file:
+        return yaml.safe_load(file)
 
 
-def escape(x): return html.escape(x, quote=False)
+def get_file_head():
+    return """<head>
+    <meta charset="UTF-8">
+    <title>NumXX - Documentation</title>
+    <link rel="icon" href="../media/numxx_icon.svg">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/hamburger_menu.css">
+    <link rel="stylesheet" href="../css/code_blocks.css">
+</head>
+"""
+
+def get_body(sidebar, main_content):
+    # Body contains sidebar and main content
+    return f"""<body>
+{sidebar}
+
+{main_content}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+    <script src="../scripts/hamburger_menu_script.js"></script>
+    <script src="../scripts/rotate_header_script.js"></script>
+    <script>const MEDIA_PATH = '../';</script>
+    <script src="../scripts/code_blocks_script.js"></script>
+
+</body>
+"""
+
+def get_sidebar_code(func_names: list[str]):
+    sidebar_actions = []
+    for func in func_names:
+        short_name = func.removeprefix("numxx::") if func.startswith("numxx::") else func
+        long_name = func if func.startswith("numxx::") else f"numxx::{func}"
+
+        if len(sidebar_actions) == 0:
+            sidebar_actions.append(f"""<li><a href="#" data-section="{short_name}" class="active">{long_name}()</a></li>""")
+        else:
+            sidebar_actions.append(f"""<li><a href="#" data-section="{short_name}">{long_name}()</a></li>""")
+
+    return f"""
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Array Creation APIs</h3>
+        </div>
+        <ul class="sidebar-menu">
+{indent("\n".join(sidebar_actions), no_indents=3)}
+        </ul>
+    </aside>
+"""
 
 
-def get_params_from_list(param_list: list[dict]):
-    return [Parameter(p) for p in param_list]
+def get_main_content(code_documentation: str):
+    header_and_nav = """<header>
+    <div class="container">
+        <div class="left-container">
+
+            <div class="big-logo">
+                <a href="../index.html">
+                    <img src="../media/numxx_logo_plain.svg" alt="NumXX">
+                </a>
+            </div>
+
+            <div class="logo-text-container">
+                <a href="../index.html">
+                    <img src="../media/NumXX_text_light.svg" alt="NumXX">
+                </a>
+                C++ Numerical Computing Library
+            </div>
+
+        </div>
+
+        <div class="small-logo">
+            <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                <img src="../media/github-logo-light.svg" alt="NumXX GitHub">
+            </a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../getting_started.html">Getting Started</a></li>
+            <li><a href="../documentation.html">Documentation</a></li>
+            <li><a href="../examples.html">Examples</a></li>
+        </ul>
+    </div>
+</nav>
+"""
+
+    footer = """
+<footer>
+    <div class="container">
+        <p>&copy; 2025 abdallahsoliman00.</p>
+    </div>
+</footer>"""
 
 
-def get_returns_from_list(param_list: list[dict]):
-    return [Returns(r) for r in param_list]
+    return f"""<div class="main-content">
+{indent(header_and_nav)}
+
+    <main class="container">
+{code_documentation}
+    </main>
+
+{indent(footer)}
+</div>
+"""
 
 
-def get_examples(examples_list):
-    for n,i in enumerate(examples_list):
-        if str(i).endswith(".cpp"):
-            examples_list[n] = Code(i)
-    return examples_list
+def get_documentation_code_from_yaml(filename: str = r"CodeGen\functions.yaml"):
+    html_data = parse_yaml(filename);
+    html_docs = ""
+    for func in html_data:
+        try:
+            sec = Section(func, html_data)
+            html_docs += sec.write_section()
+        except InitError:
+            print(f"Warning: Skipped intialization of {func}.")
+
+    return html_docs
 
 
+def group_file(functions_yaml: str = r"CodeGen\functions.yaml"):
+    parsed_yaml = parse_yaml(functions_yaml)
+    function_names = parsed_yaml.keys()
+    docs_html = get_documentation_code_from_yaml(functions_yaml)
 
-class Code:
-    def __init__(self, filename):
-        filepath = r"CodeGen\\Examples\\" + filename
-        with open(filepath, "r") as file:
-            file_content = file.read()
-
-        self.code = escape(file_content)
-
-    def __str__(self):
-        return self.code
-
-
-class Parameter:
-    def __init__(self, param_details: dict):
-        self.name = list(param_details.keys())[0]
-        self.type, self.description = param_details[self.name]
-        self.name = escape(self.name)
-
-    def __str__(self):
-        return f"{self.name} : {self.type}\n\t{self.description}"
-
-
-class Returns:
-    def __init__(self, param_details: dict):
-        self.name = list(param_details.keys())[0]
-        self.description = param_details[self.name][0]
-        self.name = escape(self.name)
-
-    def __str__(self):
-        return f"{self.name}\n\t{self.description}"
-
-
-class Section:
-    count = 0
-
-    def __init__(
-        self,
-        full_name: str,
-        function_data: dict
-    ):
-       data = function_data[full_name]
-       Section.count += 1
-       
-       self.full_name = full_name
-       self.short_name = data["short_name"]
-       self.description = data["description"]
-       self.syntax = [escape(d) for d in data["syntax"]]
-       self.params: list[Parameter] = get_params_from_list(data["params"])
-       self.returns: list[Returns] = get_returns_from_list(data["returns"])
-       self.time_comp = data["time_comp"]
-       self.examples = get_examples(data["examples"])
-
-
-    def get_syntax_section(self):
-        out = "<h3>Syntax</h3>\n"
-        for s in self.syntax:
-            out += f'    <pre><code class="language-cpp">{s}</code></pre>\n'
-        return out
-
-
-    def get_params_section(self):
-        out = '<h3>Parameters</h3>\n<div class="params-section">\n'
-        for p in self.params:
-            out += f"""\
-    <div class="param-item">
-        <div class="param-name">{p.name} : <span class="param-type">{p.type}</span></div>
-        <div class="param-description">{p.description}</div>
-    </div>\n"""
-            
-        out += "</div>"
-        return out
+    sidebar_code = get_sidebar_code(function_names)
+    main_content_code = get_main_content(docs_html)
     
+    return f"""<!DOCTYPE html>
+<html lang="en">
+{get_file_head()}
 
-    def get_examples_section(self):
-        out = "<h3>Examples</h3>\n"
-        for e in self.examples:
-            if(isinstance(e, Code)):
-                out += f'    <pre><code class="language-cpp">{e.code}</code></pre>\n'
-            else:
-                out += f"    <p>{e}" + "</p>" + "\n"
-        return out
+{get_body(sidebar_code, main_content_code)}
 
+</html>
+"""
 
-    def get_returns_section(self):
-        out ='<h3>Returns</h3>\n<div class="params-section">\n'
-
-        for r in self.returns:
-            out += f"""<div class="param-item">
-        <div class="param-name">{r.name}</div>
-        <div class="param-description">{r.description}</div>
-    </div>"""
-        out += "\n</div>"
-        return out
-
-
-    def write_section(self):
-        return f"""<!-- {self.short_name}() Section -->
-<section class="content-section{" active" if (Section.count == 1) else ""}" id="{self.short_name}">
-    <h2>{self.full_name}</h2>
-    <p>{self.description}</p>
-
-    {self.get_syntax_section()}
-
-{indent(self.get_params_section())}
-
-{indent(self.get_returns_section())}
-
-    <h3>Time Complexity</h3>
-    <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
-
-    {self.get_examples_section()}
-</section>\n\n\n"""
 
 
 if __name__ == "__main__":
-    with open(r'CodeGen\functions.yaml', 'r') as file:
-        html_data = yaml.safe_load(file)
+    full_html = group_file(r"CodeGen\functions.yaml")
 
-    html_file = ""
+    out_filename = "test.html"
+    with open(out_filename, "w") as outFile:
+        write_success = outFile.write(full_html)
 
-    for func in html_data:
-        sec = Section(func, html_data)
-        html_file += sec.write_section()
-    
-    print(html_file)
+    fmt_success = subprocess.run(
+            f"npx prettier --write {out_filename} --config .prettierrc.json",
+            shell=True
+            )
 
-    with open("test.html", 'w') as outFile:
-        outFile.write(html_file)
+    if write_success and fmt_success:
+        print(f"Success! See {out_filename}")
 
     # data = html_data["numxx::zeros<T>"]
     # print(get_params_from_list(data["params"]))

@@ -25,7 +25,10 @@ numxx::linspace:
     - "Create an NArray of 11 points from 0 to 1:"
     - "linspace.cpp"
 
-numxx::zeros<T>:
+numxx::arange:
+  short_name: arange
+
+numxx::zeros:
   short_name: zeros
   description: "Creates an array of a given shape and calls the default constructor for all elements."
   syntax:
@@ -54,4 +57,35 @@ numxx::zeros<T>:
     - "It also works for custom types:"
     - "zeros2.cpp"
 
- 
+numxx::zeros_like:
+  short_name: zeros_like
+
+numxx::ones:
+  short_name: ones
+
+numxx::ones_like:
+  short_name: ones_like
+
+numxx::eye:
+  short_name: eye
+
+numxx::identity:
+  short_name: identity
+
+numxx::empty:
+  short_name: empty
+
+numxx::empty_like:
+  short_name: empty_like
+
+numxx::full:
+  short_name: full
+
+numxx::full_like:
+  short_name: full_like
+
+numxx::copy:
+  short_name: copy
+
+numxx::deepcopy:
+  short_name: deepcopy

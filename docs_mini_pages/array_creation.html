@@ -83,130 +83,118 @@
 
 
         <main class="container">
-            <!-- linspace() Section -->
-            <section class="content-section active" id="linspace">
-                <h2>numxx::linspace&lt;T&gt;()</h2>
-                <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
+        <!-- linspace() Section -->
+        <section class="content-section active" id="linspace">
+            <h2>numxx::linspace</h2>
+            <p>Creates an array of evenly spaced values within a given interval.</p>
 
-                <h3>Syntax</h3>
-                <pre><code class="language-cpp">NArray&lt;double&gt; linspace(const float start, const float stop, const size_t count, const bool endpoint = true);</code></pre>
+            <h3>Syntax</h3>
+            <pre><code class="language-cpp">NArray&lt;double&gt; linspace(const float start, const float stop, const size_t count, const bool endpoint = true);</code></pre>
 
-                <h3>Parameters</h3>
-                <div class="params-section">
-                    <div class="param-item">
-                        <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
-                        <div class="param-description">The data type to be stored.</div>
-                    </div>
-                    <div class="param-item">
-                        <div class="param-name">shape : <span class="param-type">Shape</span></div>
-                        <div class="param-description">Dimensions of the shape to create. (Creates an N-Dimensional
-                            array)</div>
-                    </div>
-                    <div class="param-item">
-                        <div class="param-name">size : <span class="param-type">size_t</span></div>
-                        <div class="param-description">The size of the array (creates a 1D array).</div>
+
+            <h3>Parameters</h3>
+            <div class="params-section">
+                <div class="param-item">
+                    <div class="param-name">start : <span class="param-type">float</span></div>
+                    <div class="param-description">The first number in the array.</div>
+                </div>
+                <div class="param-item">
+                    <div class="param-name">stop : <span class="param-type">float</span></div>
+                    <div class="param-description">The upper bound of the array.</div>
+                </div>
+                <div class="param-item">
+                    <div class="param-name">count : <span class="param-type">size_t</span></div>
+                    <div class="param-description">The number of elements in the array.</div>
+                </div>
+                <div class="param-item">
+                    <div class="param-name">endpoint : <span class="param-type">bool (defaults to true)</span></div>
+                    <div class="param-description">Spcifies whether on not the value of stop should be included as the last
+                        element of the array. Setting endpoint to true makes stop the last element of the array.</div>
+                </div>
+            </div>
+
+            <h3>Returns</h3>
+            <div class="params-section">
+                <div class="param-item">
+                    <div class="param-name">NArray&lt;double&gt;</div>
+                    <div class="param-description">An NArray object of type double with equally spaced elements starting at
+                        start and ending at stop.
+                        If endpoint is set to true, the elements are spaced such that stop is the final element of the array.
                     </div>
                 </div>
+            </div>
 
-                <h3>Returns</h3>
-                <div class="params-section">
-                    <div class="param-item">
-                        <div class="param-name">NArray&lt;T&gt;</div>
-                        <div class="param-description">An NArray object of type T filled with zeros or the default
-                            constructed value of T.</div>
-                    </div>
-                </div>
+            <h3>Time Complexity</h3>
+            <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
 
-                <h3>Time Complexity</h3>
-                <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
-
-                <h3>Example</h3>
-                <p>Inintialise an NArray of arbitrary shape:</p>
-                <pre><code class="language-cpp">#include "NumXX.hpp"
+            <h3>Examples</h3>
+            <p>Create an NArray of 11 points from 0 to 1:</p>
+            <pre><code class="language-cpp">#include "NumXX.hpp"
 
 int main() {
-    auto mat = numxx::zeros&lt;float&gt;({2,3});
-    auto arr = numxx::zeros&lt;float&gt;(5);
+    auto arr1 = numxx::linspace(0.0f, 1.0f, 11, true);
+    auto arr2 = numxx::linspace(0.0f, 1.0f, 11, false);
 
-    std::cout &lt;&lt; mat &lt;&lt; std::endl;
-    // &gt;&gt; [[0 0 0]
-    //     [0 0 0]]
-    std::cout &lt;&lt; arr &lt;&lt; std::endl;
-    // &gt;&gt; [0 0 0 0 0]
+    std::cout &lt;&lt; arr1 &lt;&lt; std::endl;
+    // &gt;&gt; [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ]
+    std::cout &lt;&lt; arr2 &lt;&lt; std::endl;
+    // &gt;&gt; [0.        0.0909091 0.1818182 0.2727273 0.3636364 0.4545455 0.5454546 0.6363636 0.7272727 0.8181819 0.9090909]
 }</code></pre>
-                <p>It also works for custom types:</p>
-                <pre><code class="language-cpp">#include "NumXX.hpp"
 
-// Custom Type
-struct MyType {
-    std::string str;
-
-    MyType() : str("default") {}
-    MyType(std::string s) : str(s) {}
-
-    // Needs a &lt;&lt; print overload for NArray to print it
-    friend std::ostream&amp; operator&lt;&lt; (std::ostream&amp; os, const MyType&amp; obj) {
-        os &lt;&lt; obj.str;
-        return os;
-    }
-};
-
-int main() {
-    // Calls the default constructor of MyType
-    auto a = numxx::zeros&lt;MyType&gt;(3);
-    std::cout &lt;&lt; a;
-    // &gt;&gt; [default default default]
-}</code></pre>
-            </section>
+        </section>
 
 
+        <!-- zeros() Section -->
+        <section class="content-section" id="zeros">
+            <h2>numxx::zeros</h2>
+            <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
 
-            <!-- zeros() Section -->
-            <section class="content-section active" id="zeros">
-                <h2>numxx::zeros&lt;T&gt;()</h2>
-                <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
-
-                <h3>Syntax</h3>
-                <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
+            <h3>Syntax</h3>
+            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
 NArray&lt;T&gt; zeros(Shape shape);</code></pre>
-                <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
-NArray&lt;T&gt; zeros(const size_t&amp; size);</code></pre>
+            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
+NArray&lt;T&gt; zeros(const size_t size);</code></pre>
 
-                <h3>Parameters</h3>
-                <div class="params-section">
-                    <div class="param-item">
-                        <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
-                        <div class="param-description">The data type to be stored.</div>
-                    </div>
-                    <div class="param-item">
-                        <div class="param-name">shape : <span class="param-type">Shape</span></div>
-                        <div class="param-description">Dimensions of the shape to create. (Creates an N-Dimensional
-                            array)</div>
-                    </div>
-                    <div class="param-item">
-                        <div class="param-name">size : <span class="param-type">size_t</span></div>
-                        <div class="param-description">The size of the array (creates a 1D array).</div>
-                    </div>
+
+            <h3>Parameters</h3>
+            <div class="params-section">
+                <div class="param-item">
+                    <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
+                    <div class="param-description">The data type to be stored.</div>
                 </div>
-
-                <h3>Returns</h3>
-                <div class="params-section">
-                    <div class="param-item">
-                        <div class="param-name">NArray&lt;T&gt;</div>
-                        <div class="param-description">An NArray object of type T filled with zeros or the default
-                            constructed value of T.</div>
-                    </div>
+                <div class="param-item">
+                    <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                    <div class="param-description">Dimensions of the shape to create. (Creates an N-Dimensional array)</div>
                 </div>
+                <div class="param-item">
+                    <div class="param-name">size : <span class="param-type">size_t</span></div>
+                    <div class="param-description">The size of the array (creates a 1D array).</div>
+                </div>
+            </div>
 
-                <h3>Time Complexity</h3>
-                <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
+            <h3>Returns</h3>
+            <div class="params-section">
+                <div class="param-item">
+                    <div class="param-name">NArray&lt;double&gt;</div>
+                    <div class="param-description">An NArray object of type T filled with zeros or the default constructed value
+                        of T.</div>
+                </div>
+                <div class="param-item">
+                    <div class="param-name">int</div>
+                    <div class="param-description">description and what not.</div>
+                </div>
+            </div>
 
-                <h3>Example</h3>
-                <p>Inintialise an NArray of arbitrary shape:</p>
-                <pre><code class="language-cpp">#include "NumXX.hpp"
+            <h3>Time Complexity</h3>
+            <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
 
-int main() {
-    auto mat = numxx::zeros&lt;float&gt;({2,3});
+            <h3>Examples</h3>
+            <p>Initialise an NArray of arbitrary shape:</p>
+            <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main()
+{
+    auto mat = numxx::zeros&lt;float&gt;({2, 3});
     auto arr = numxx::zeros&lt;float&gt;(5);
 
     std::cout &lt;&lt; mat &lt;&lt; std::endl;
@@ -215,8 +203,8 @@ int main() {
     std::cout &lt;&lt; arr &lt;&lt; std::endl;
     // &gt;&gt; [0 0 0 0 0]
 }</code></pre>
-                <p>It also works for custom types:</p>
-                <pre><code class="language-cpp">#include "NumXX.hpp"
+            <p>It also works for custom types:</p>
+            <pre><code class="language-cpp">#include "NumXX.hpp"
 
 // Custom Type
 struct MyType {
@@ -226,7 +214,7 @@ struct MyType {
     MyType(std::string s) : str(s) {}
 
     // Needs a &lt;&lt; print overload for NArray to print it
-    friend std::ostream&amp; operator&lt;&lt; (std::ostream&amp; os, const MyType&amp; obj) {
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, const MyType &amp;obj) {
         os &lt;&lt; obj.str;
         return os;
     }
@@ -238,7 +226,8 @@ int main() {
     std::cout &lt;&lt; a;
     // &gt;&gt; [default default default]
 }</code></pre>
-            </section>
+
+        </section>
 
 
         </main>

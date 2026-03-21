@@ -37,6 +37,17 @@ jobs:
       - name: Disable Jekyll
         run: touch .nojekyll
         
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Prettier
+        run: npm install --save-dev prettier
+
+      - name: Format files with Prettier
+        run: npx prettier --write . --config .prettierrc.json
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

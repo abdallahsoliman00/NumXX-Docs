@@ -1,0 +1,13 @@
+{
+    "reportMissingParameterType": "none",
+    "reportUnknownVariableType" : "none",
+    "reportUnknownArgumentType" : "none",
+    "reportUnknownParameterType" : "none",
+    "reportUnknownMemberType" : "none",
+    "reportGeneralTypeIssues" : "none",
+    "reportMissingTypeArgument": "none",
+    "reportUnannotatedClassAttribute": "none",
+    "reportImplicitOverride": "none",
+    "reportAny": "none",
+    "reportArgumentType": "none"
+}
