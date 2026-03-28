@@ -1,135 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>NumXX - Documentation</title>
+        <link rel="icon" href="../media/numxx_icon.svg" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+        />
+        <link rel="stylesheet" href="../css/styles.css" />
+        <link rel="stylesheet" href="../css/hamburger_menu.css" />
+        <link rel="stylesheet" href="../css/code_blocks.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <title>NumXX - Documentation</title>
-    <link rel="icon" href="../media/numxx_icon.svg">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/hamburger_menu.css">
-    <link rel="stylesheet" href="../css/code_blocks.css">
-</head>
+    <body>
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Array Creation APIs</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" data-section="linspace" class="active">numxx::linspace()</a></li>
+                <li><a href="#" data-section="arange">numxx::arange()</a></li>
+                <li><a href="#" data-section="zeros">numxx::zeros()</a></li>
+                <li><a href="#" data-section="zeros_like">numxx::zeros_like()</a></li>
+                <li><a href="#" data-section="ones">numxx::ones()</a></li>
+                <li><a href="#" data-section="ones_like">numxx::ones_like()</a></li>
+                <li><a href="#" data-section="eye">numxx::eye()</a></li>
+                <li><a href="#" data-section="identity">numxx::identity()</a></li>
+                <li><a href="#" data-section="empty">numxx::empty()</a></li>
+                <li><a href="#" data-section="empty_like">numxx::empty_like()</a></li>
+                <li><a href="#" data-section="full">numxx::full()</a></li>
+                <li><a href="#" data-section="full_like">numxx::full_like()</a></li>
+                <li><a href="#" data-section="copy">numxx::copy()</a></li>
+                <li><a href="#" data-section="deepcopy">numxx::deepcopy()</a></li>
+            </ul>
+        </aside>
 
-<body>
+        <div class="main-content">
+            <header>
+                <div class="container">
+                    <div class="left-container">
+                        <div class="big-logo">
+                            <a href="../index.html">
+                                <img src="../media/numxx_logo_plain.svg" alt="NumXX" />
+                            </a>
+                        </div>
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>Array Creation APIs</h3>
-        </div>
-        <ul class="sidebar-menu">
-            <li><a href="#" data-section="linspace" class="active">numxx::linspace()</a></li>
-            <li><a href="#" data-section="arange">numxx::arange()</a></li>
-            <li><a href="#" data-section="zeros">numxx::zeros()</a></li>
-            <li><a href="#" data-section="zeros_like">numxx::zeros_like()</a></li>
-            <li><a href="#" data-section="ones">numxx::ones()</a></li>
-            <li><a href="#" data-section="ones_like">numxx::ones_like()</a></li>
-            <li><a href="#" data-section="eye">numxx::eye()</a></li>
-            <li><a href="#" data-section="identity">numxx::identity()</a></li>
-            <li><a href="#" data-section="empty">numxx::empty()</a></li>
-            <li><a href="#" data-section="empty_like">numxx::empty_like()</a></li>
-            <li><a href="#" data-section="full">numxx::full()</a></li>
-            <li><a href="#" data-section="full_like">numxx::full_like()</a></li>
-            <li><a href="#" data-section="copy">numxx::copy()</a></li>
-            <li><a href="#" data-section="deepcopy">numxx::deepcopy()</a></li>
-        </ul>
-    </aside>
+                        <div class="logo-text-container">
+                            <a href="../index.html">
+                                <img src="../media/NumXX_text_light.svg" alt="NumXX" />
+                            </a>
+                            C++ Numerical Computing Library
+                        </div>
+                    </div>
 
-    <div class="main-content">
-        <header>
-            <div class="container">
-                <div class="left-container">
-
-                    <div class="big-logo">
-                        <a href="../index.html">
-                            <img src="../media/numxx_logo_plain.svg" alt="NumXX">
+                    <div class="small-logo">
+                        <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
+                            <img src="../media/github-logo-light.svg" alt="NumXX GitHub" />
                         </a>
                     </div>
+                </div>
+            </header>
 
-                    <div class="logo-text-container">
-                        <a href="../index.html">
-                            <img src="../media/NumXX_text_light.svg" alt="NumXX">
-                        </a>
-                        C++ Numerical Computing Library
+            <nav>
+                <div class="container">
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../getting_started.html">Getting Started</a></li>
+                        <li><a href="../documentation.html">Documentation</a></li>
+                        <li><a href="../examples.html">Examples</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="container">
+                <!-- linspace() Section -->
+                <section class="content-section active" id="linspace">
+                    <h2>numxx::linspace</h2>
+                    <p>Creates an array of evenly spaced values within a given interval.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">NArray&lt;double&gt; linspace(const float start, const float stop, const size_t count, const bool endpoint = true);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">start : <span class="param-type">double</span></div>
+                            <div class="param-description">The first number in the array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">stop : <span class="param-type">double</span></div>
+                            <div class="param-description">The upper bound of the array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">count : <span class="param-type">size_t</span></div>
+                            <div class="param-description">The number of elements in the array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">
+                                endpoint : <span class="param-type">bool (defaults to true)</span>
+                            </div>
+                            <div class="param-description">
+                                Spcifies whether on not the value of stop should be included as the last element of the
+                                array. Setting endpoint to true makes stop the last element of the array.
+                            </div>
+                        </div>
                     </div>
 
-                </div>
-
-                <div class="small-logo">
-                    <a href="https://github.com/abdallahsoliman00/NumXX" target="_blank" title="NumXX GitHub">
-                        <img src="../media/github-logo-light.svg" alt="NumXX GitHub">
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <nav>
-            <div class="container">
-                <button class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../getting_started.html">Getting Started</a></li>
-                    <li><a href="../documentation.html">Documentation</a></li>
-                    <li><a href="../examples.html">Examples</a></li>
-                </ul>
-            </div>
-        </nav>
-
-
-        <main class="container">
-        <!-- linspace() Section -->
-        <section class="content-section active" id="linspace">
-            <h2>numxx::linspace</h2>
-            <p>Creates an array of evenly spaced values within a given interval.</p>
-
-            <h3>Syntax</h3>
-            <pre><code class="language-cpp">NArray&lt;double&gt; linspace(const float start, const float stop, const size_t count, const bool endpoint = true);</code></pre>
-
-
-            <h3>Parameters</h3>
-            <div class="params-section">
-                <div class="param-item">
-                    <div class="param-name">start : <span class="param-type">float</span></div>
-                    <div class="param-description">The first number in the array.</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">stop : <span class="param-type">float</span></div>
-                    <div class="param-description">The upper bound of the array.</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">count : <span class="param-type">size_t</span></div>
-                    <div class="param-description">The number of elements in the array.</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">endpoint : <span class="param-type">bool (defaults to true)</span></div>
-                    <div class="param-description">Spcifies whether on not the value of stop should be included as the last
-                        element of the array. Setting endpoint to true makes stop the last element of the array.</div>
-                </div>
-            </div>
-
-            <h3>Returns</h3>
-            <div class="params-section">
-                <div class="param-item">
-                    <div class="param-name">NArray&lt;double&gt;</div>
-                    <div class="param-description">An NArray object of type double with equally spaced elements starting at
-                        start and ending at stop.
-                        If endpoint is set to true, the elements are spaced such that stop is the final element of the array.
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;double&gt;</div>
+                            <div class="param-description">
+                                An NArray object of type double with equally spaced elements starting at start and
+                                ending at stop. If endpoint is set to true, the elements are spaced such that stop is
+                                the final element of the array.
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <h3>Time Complexity</h3>
-            <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
 
-            <h3>Examples</h3>
-            <p>Create an NArray of 11 points from 0 to 1:</p>
-            <pre><code class="language-cpp">#include "NumXX.hpp"
+                    <h3>Examples</h3>
+                    <p>Create an NArray of 11 points from 0 to 1:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
 
 int main() {
     auto arr1 = numxx::linspace(0.0f, 1.0f, 11, true);
@@ -137,63 +138,129 @@ int main() {
 
     std::cout &lt;&lt; arr1 &lt;&lt; std::endl;
     // &gt;&gt; [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ]
+
     std::cout &lt;&lt; arr2 &lt;&lt; std::endl;
     // &gt;&gt; [0.        0.0909091 0.1818182 0.2727273 0.3636364 0.4545455 0.5454546 0.6363636 0.7272727 0.8181819 0.9090909]
-}</code></pre>
+}
+</code></pre>
+                </section>
 
-        </section>
+                <!-- arange() Section -->
+                <section class="content-section" id="arange">
+                    <h2>numxx::arange</h2>
+                    <p>Creates an array of evenly spaced values within a given interval.</p>
 
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; arange(const dtype start, const dtype stop, const dtype step = dtype(1));</code></pre>
 
-        <!-- zeros() Section -->
-        <section class="content-section" id="zeros">
-            <h2>numxx::zeros</h2>
-            <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">None</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">start : <span class="param-type">dtype</span></div>
+                            <div class="param-description">
+                                The lower bound of the interval. This value is included in the output array.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">stop : <span class="param-type">dtype</span></div>
+                            <div class="param-description">
+                                The upper bound of the interval. This value is NOT included in the output array.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">step : <span class="param-type">dtype</span></div>
+                            <div class="param-description">
+                                The spacing between values. For any output array, this is the distance between any two
+                                contiguous values.
+                            </div>
+                        </div>
+                    </div>
 
-            <h3>Syntax</h3>
-            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
-NArray&lt;T&gt; zeros(Shape shape);</code></pre>
-            <pre><code class="language-cpp">template &lt;typename T = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt;
-NArray&lt;T&gt; zeros(const size_t size);</code></pre>
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">Returns an NArray of evenly spaced values.</div>
+                        </div>
+                    </div>
 
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
 
-            <h3>Parameters</h3>
-            <div class="params-section">
-                <div class="param-item">
-                    <div class="param-name">T : <span class="param-type">(defaults to double)</span></div>
-                    <div class="param-description">The data type to be stored.</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">shape : <span class="param-type">Shape</span></div>
-                    <div class="param-description">Dimensions of the shape to create. (Creates an N-Dimensional array)</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">size : <span class="param-type">size_t</span></div>
-                    <div class="param-description">The size of the array (creates a 1D array).</div>
-                </div>
-            </div>
+                    <h3>Examples</h3>
+                    <p>Create NArrays of evenly spaced values using arange:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
 
-            <h3>Returns</h3>
-            <div class="params-section">
-                <div class="param-item">
-                    <div class="param-name">NArray&lt;double&gt;</div>
-                    <div class="param-description">An NArray object of type T filled with zeros or the default constructed value
-                        of T.</div>
-                </div>
-                <div class="param-item">
-                    <div class="param-name">int</div>
-                    <div class="param-description">description and what not.</div>
-                </div>
-            </div>
+int main() {
+    auto arr1 = numxx::arange(10, 1, -1);
+    auto arr2 = numxx::arange(0, 1.45, 0.2);
 
-            <h3>Time Complexity</h3>
-            <p style="font-weight: bold; font-size: 1.15rem;">O(n)</p>
+    std::cout &lt;&lt; arr1 &lt;&lt; std::endl;
+    // &gt;&gt; [10  9  8  7  6  5  4  3  2] 
 
-            <h3>Examples</h3>
-            <p>Initialise an NArray of arbitrary shape:</p>
-            <pre><code class="language-cpp">#include "NumXX.hpp"
+    std::cout &lt;&lt; arr2 &lt;&lt; std::endl;
+    // &gt;&gt; [0.  0.2 0.4 0.6 0.8 1.  1.2 1.4]
+}
+</code></pre>
+                </section>
 
-int main()
-{
+                <!-- zeros() Section -->
+                <section class="content-section" id="zeros">
+                    <h2>numxx::zeros</h2>
+                    <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; zeros(Shape shape);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; zeros(const size_t size);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type to be stored.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                            <div class="param-description">
+                                Dimensions of the shape to create. (Creates an N-Dimensional array)
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">size : <span class="param-type">size_t</span></div>
+                            <div class="param-description">The size of the array (creates a 1D array).</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;double&gt;</div>
+                            <div class="param-description">
+                                An NArray object of type dtype filled with zeros or the default constructed value of
+                                dtype.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">int</div>
+                            <div class="param-description">description and what not.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Initialise an NArray of arbitrary shape:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
     auto mat = numxx::zeros&lt;float&gt;({2, 3});
     auto arr = numxx::zeros&lt;float&gt;(5);
 
@@ -202,9 +269,10 @@ int main()
     //     [0 0 0]]
     std::cout &lt;&lt; arr &lt;&lt; std::endl;
     // &gt;&gt; [0 0 0 0 0]
-}</code></pre>
-            <p>It also works for custom types:</p>
-            <pre><code class="language-cpp">#include "NumXX.hpp"
+}
+</code></pre>
+                    <p>It also works for custom types:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
 
 // Custom Type
 struct MyType {
@@ -225,27 +293,128 @@ int main() {
     auto a = numxx::zeros&lt;MyType&gt;(3);
     std::cout &lt;&lt; a;
     // &gt;&gt; [default default default]
-}</code></pre>
+}
+</code></pre>
+                </section>
 
-        </section>
+                <!-- zeros_like() Section -->
+                <section class="content-section" id="zeros_like">
+                    <h2>numxx::zeros_like</h2>
+                    <p>
+                        Creates an NArray with the same dimensions / Shape as another NArray and calls the default
+                        constructor for all elements.
+                    </p>
 
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename U&gt;
+NArray&lt;dtype&gt; zeros_like(const NArray&lt;U&gt;&amp; other);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename U&gt;
+NArray&lt;dtype&gt; zeros_like(const std::vector&lt;U&gt;&amp; other);</code></pre>
 
-        </main>
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type to be stored.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">U : <span class="param-type"> </span></div>
+                            <div class="param-description">
+                                The data type of the other NArray or std::vector. This can be any data type.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">other : <span class="param-type">NArray, std::vector</span></div>
+                            <div class="param-description">
+                                The other NArray or vector to be used as a size reference for the new NArray.
+                            </div>
+                        </div>
+                    </div>
 
-        <footer>
-            <div class="container">
-                <p>&copy; 2025 abdallahsoliman00.</p>
-            </div>
-        </footer>
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">
+                                An NArray of the data type <i>dtype</i>'s default value.
+                            </div>
+                        </div>
+                    </div>
 
-    </div>
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
-    <script src="../scripts/hamburger_menu_script.js"></script>
-    <script src="../scripts/rotate_header_script.js"></script>
-    <script>const MEDIA_PATH = '../';</script>
-    <script src="../scripts/code_blocks_script.js"></script>
-</body>
+                    <h3>Examples</h3>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
 
+int main() {
+    auto arr = numxx::NArray({14, 3, 2, 56});
+    auto new_arr = numxx::zeros_like(arr);
+
+    auto vec = std::vector({10.0, 23.2, 1.3});
+    auto other_arr = numxx::zeros_like(vec);
+
+    std::cout &lt;&lt; new_arr;
+    // &gt;&gt; [0 0 0 0]
+
+    std::cout &lt;&lt; other_arr;
+    // &gt;&gt; [0 0 0]
+}
+</code></pre>
+                    <p>
+                        Just like numxx::zeros, numxx::zeros_like also calls the default constructor for all elements of
+                        the output array:
+                    </p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+// Custom Type
+struct MyType {
+    std::string str;
+
+    MyType() : str("default") {}
+    MyType(std::string s) : str(s) {}
+
+    // Needs a &lt;&lt; print overload for NArray to print it
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, const MyType &amp;obj) {
+        os &lt;&lt; obj.str;
+        return os;
+    }
+};
+
+int main() {
+    // Calls the default constructor of MyType
+    auto ref_arr = std::vector({1,1,2});
+    auto new_arr = numxx::zeros_like&lt;MyType&gt;(ref_arr);
+
+    auto ref_matrix = numxx::NArray({{1,1,2}, {3,4,0}});
+    auto new_matrix = numxx::zeros_like&lt;MyType&gt;(ref_matrix);
+
+    std::cout &lt;&lt; new_arr;
+    // &gt;&gt; [default default default]
+
+    std::cout &lt;&lt; new_matrix;
+    // &gt;&gt; [[default default default]
+    //     [default default default]]
+}
+
+</code></pre>
+                </section>
+            </main>
+
+            <footer>
+                <div class="container">
+                    <p>&copy; 2025 abdallahsoliman00.</p>
+                </div>
+            </footer>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+        <script src="../scripts/hamburger_menu_script.js"></script>
+        <script src="../scripts/rotate_header_script.js"></script>
+        <script>
+            const MEDIA_PATH = "../";
+        </script>
+        <script src="../scripts/code_blocks_script.js"></script>
+    </body>
 </html>

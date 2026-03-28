@@ -16,7 +16,17 @@ struct MyType {
 
 int main() {
     // Calls the default constructor of MyType
-    auto a = numxx::zeros<MyType>(3);
-    std::cout << a;
+    auto ref_arr = std::vector({1,1,2});
+    auto new_arr = numxx::zeros_like<MyType>(ref_arr);
+
+    auto ref_matrix = numxx::NArray({{1,1,2}, {3,4,0}});
+    auto new_matrix = numxx::zeros_like<MyType>(ref_matrix);
+
+    std::cout << new_arr;
     // >> [default default default]
+
+    std::cout << new_matrix;
+    // >> [[default default default]
+    //     [default default default]]
 }
+

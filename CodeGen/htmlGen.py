@@ -50,10 +50,11 @@ def get_sidebar_code(func_names: list[str]):
         short_name = func.removeprefix("numxx::") if func.startswith("numxx::") else func
         long_name = func if func.startswith("numxx::") else f"numxx::{func}"
 
-        if len(sidebar_actions) == 0:
-            sidebar_actions.append(f"""<li><a href="#" data-section="{short_name}" class="active">{long_name}()</a></li>""")
-        else:
-            sidebar_actions.append(f"""<li><a href="#" data-section="{short_name}">{long_name}()</a></li>""")
+        if short_name != "template":
+            if len(sidebar_actions) == 0:
+                sidebar_actions.append(f"""<li><a href="#" data-section="{short_name}" class="active">{long_name}()</a></li>""")
+            else:
+                sidebar_actions.append(f"""<li><a href="#" data-section="{short_name}">{long_name}()</a></li>""")
 
     return f"""
     <!-- Sidebar -->
@@ -164,22 +165,19 @@ def group_file(functions_yaml: str = r"CodeGen\functions.yaml"):
 """
 
 
-
+# Run from root directory using:
+#   python -m CodeGen.htmlGen
 if __name__ == "__main__":
     full_html = group_file(r"CodeGen\functions.yaml")
 
-    out_filename = "test.html"
+    out_filename = r"docs_mini_pages\array_creation.html"
     with open(out_filename, "w") as outFile:
         write_success = outFile.write(full_html)
 
     fmt_success = subprocess.run(
-            f"npx prettier --write {out_filename} --config .prettierrc.json",
-            shell=True
-            )
+        f"npx prettier --write {out_filename} --config .prettierrc.json",
+        shell=True
+    )
 
     if write_success and fmt_success:
         print(f"Success! See {out_filename}")
-
-    # data = html_data["numxx::zeros<T>"]
-    # print(get_params_from_list(data["params"]))
-    # print(data["returns"])

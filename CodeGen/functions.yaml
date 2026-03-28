@@ -5,10 +5,10 @@ numxx::linspace:
   - "NArray<double> linspace(const float start, const float stop, const size_t count, const bool endpoint = true);"
   params:
     - start:
-      - float
+      - double
       - "The first number in the array."
     - stop:
-      - float
+      - double
       - "The upper bound of the array."
     - count:
       - size_t
@@ -27,15 +27,39 @@ numxx::linspace:
 
 numxx::arange:
   short_name: arange
+  description: "Creates an array of evenly spaced values within a given interval."
+  syntax:
+  - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> arange(const dtype start, const dtype stop, const dtype step = dtype(1));"
+  params:
+    - dtype:
+      - (defaults to double)
+      - 
+    - start:
+      - dtype
+      - "The lower bound of the interval. This value is included in the output array."
+    - stop:
+      - dtype
+      - "The upper bound of the interval. This value is NOT included in the output array."
+    - step:
+      - dtype
+      - "The spacing between values. For any output array, this is the distance between any two contiguous values."
+  returns:
+    - NArray<dtype>:
+      - "Returns an NArray of evenly spaced values."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create NArrays of evenly spaced values using arange:"
+    - "arange.cpp"
 
 numxx::zeros:
   short_name: zeros
   description: "Creates an array of a given shape and calls the default constructor for all elements."
   syntax:
-    - "template <typename T = double, typename = std::enable_if_t<std::is_arithmetic_v<T>>>\nNArray<T> zeros(Shape shape);"
-    - "template <typename T = double, typename = std::enable_if_t<std::is_arithmetic_v<T>>>\nNArray<T> zeros(const size_t size);"
+    - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> zeros(Shape shape);"
+    - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> zeros(const size_t size);"
   params:
-    - T:
+    - dtype:
       - (defaults to double)
       - "The data type to be stored."
     - shape:
@@ -46,7 +70,7 @@ numxx::zeros:
       -  "The size of the array (creates a 1D array)."
   returns:
     - NArray<double>:
-      - "An NArray object of type T filled with zeros or the default constructed value of T."
+      - "An NArray object of type dtype filled with zeros or the default constructed value of dtype."
     - int:
       - "description and what not."
   time_comp:
@@ -59,6 +83,29 @@ numxx::zeros:
 
 numxx::zeros_like:
   short_name: zeros_like
+  description: "Creates an NArray with the same dimensions / Shape as another NArray and calls the default constructor for all elements."
+  syntax:
+  - "template <typename dtype = double, typename U>\nNArray<dtype> zeros_like(const NArray<U>& other);"
+  - "template <typename dtype = double, typename U>\nNArray<dtype> zeros_like(const std::vector<U>& other);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type to be stored."
+    - U:
+      - " "
+      - "The data type of the other NArray or std::vector. This can be any data type."
+    - other:
+      - NArray, std::vector
+      - "The other NArray or vector to be used as a size reference for the new NArray."
+  returns:
+    - NArray<dtype>:
+      - "An NArray of the data type <i>dtype</i>'s default value."
+  time_comp:
+    - O(n)
+  examples:
+    - "zeros_like1.cpp"
+    - "Just like numxx::zeros, numxx::zeros_like also calls the default constructor for all elements of the output array:"
+    - "zeros_like2.cpp"
 
 numxx::ones:
   short_name: ones
@@ -89,3 +136,24 @@ numxx::copy:
 
 numxx::deepcopy:
   short_name: deepcopy
+
+template:
+  ignore_this_please: ignore    # This is to  make the generator ignore this template
+  short_name: linspace
+  description: "Function description"
+  syntax:
+  - "Different"
+  - "Syntaxes"
+  params:
+    - param_name:
+      - param_type
+      - Parameter Description
+  returns:
+    - return_type:
+      - Return Description.
+  time_comp:
+    - O(n)
+  examples:
+    - "Example description"
+    - "example_file.cpp"
+

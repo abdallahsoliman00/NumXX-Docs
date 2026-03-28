@@ -77,9 +77,9 @@ class Section:
             self.examples: list[str | Code] = get_examples(data["examples"])
             self.init_complete = True
             Section.count += 1
-        except:
+        except Exception as e:
             self.init_complete = False
-            print(f"Warning: Skipped {self.full_name}")
+            print(f"Warning: Skipped {self.full_name} due to:\n{e}")
             raise InitError("Unable to initialize section.")
 
 
