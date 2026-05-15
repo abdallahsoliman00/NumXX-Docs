@@ -34,6 +34,8 @@
                 <li><a href="#" data-section="full_like">numxx::full_like()</a></li>
                 <li><a href="#" data-section="copy">numxx::copy()</a></li>
                 <li><a href="#" data-section="deepcopy">numxx::deepcopy()</a></li>
+                <li><a href="#" data-section="logspace">numxx::logspace()</a></li>
+                <li><a href="#" data-section="geomspace">numxx::geomspace()</a></li>
             </ul>
         </aside>
 
@@ -86,7 +88,7 @@
                     <p>Creates an array of evenly spaced values within a given interval.</p>
 
                     <h3>Syntax</h3>
-                    <pre><code class="language-cpp">NArray&lt;double&gt; linspace(const float start, const float stop, const size_t count, const bool endpoint = true);</code></pre>
+                    <pre><code class="language-cpp">NArray&lt;double&gt; linspace(const double start, const double stop, const uint32_t count, const bool endpoint = true);</code></pre>
 
                     <h3>Parameters</h3>
                     <div class="params-section">
@@ -99,7 +101,7 @@
                             <div class="param-description">The upper bound of the array.</div>
                         </div>
                         <div class="param-item">
-                            <div class="param-name">count : <span class="param-type">size_t</span></div>
+                            <div class="param-name">count : <span class="param-type">uint32_t</span></div>
                             <div class="param-description">The number of elements in the array.</div>
                         </div>
                         <div class="param-item">
@@ -107,7 +109,7 @@
                                 endpoint : <span class="param-type">bool (defaults to true)</span>
                             </div>
                             <div class="param-description">
-                                Spcifies whether on not the value of stop should be included as the last element of the
+                                Specifies whether or not the value of stop should be included as the last element of the
                                 array. Setting endpoint to true makes stop the last element of the array.
                             </div>
                         </div>
@@ -151,6 +153,7 @@ int main() {
                     <p>Creates an array of evenly spaced values within a given interval.</p>
 
                     <h3>Syntax</h3>
+                    <pre><code class="language-cpp">NArray&lt;double&gt; arange(const double start, const double stop, const double step = 1.0);</code></pre>
                     <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
 NArray&lt;dtype&gt; arange(const dtype start, const dtype stop, const dtype step = dtype(1));</code></pre>
 
@@ -158,7 +161,7 @@ NArray&lt;dtype&gt; arange(const dtype start, const dtype stop, const dtype step
                     <div class="params-section">
                         <div class="param-item">
                             <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
-                            <div class="param-description">None</div>
+                            <div class="param-description">The data type of the elements in the array.</div>
                         </div>
                         <div class="param-item">
                             <div class="param-name">start : <span class="param-type">dtype</span></div>
@@ -215,9 +218,9 @@ int main() {
                     <p>Creates an array of a given shape and calls the default constructor for all elements.</p>
 
                     <h3>Syntax</h3>
-                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
 NArray&lt;dtype&gt; zeros(Shape shape);</code></pre>
-                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
 NArray&lt;dtype&gt; zeros(const size_t size);</code></pre>
 
                     <h3>Parameters</h3>
@@ -241,15 +244,11 @@ NArray&lt;dtype&gt; zeros(const size_t size);</code></pre>
                     <h3>Returns</h3>
                     <div class="params-section">
                         <div class="param-item">
-                            <div class="param-name">NArray&lt;double&gt;</div>
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
                             <div class="param-description">
                                 An NArray object of type dtype filled with zeros or the default constructed value of
                                 dtype.
                             </div>
-                        </div>
-                        <div class="param-item">
-                            <div class="param-name">int</div>
-                            <div class="param-description">description and what not.</div>
                         </div>
                     </div>
 
@@ -397,6 +396,694 @@ int main() {
     //     [default default default]]
 }
 
+</code></pre>
+                </section>
+
+                <!-- ones() Section -->
+                <section class="content-section" id="ones">
+                    <h2>numxx::ones</h2>
+                    <p>Creates an array filled with ones.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;is_complex_or_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; ones(const size_t size);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; ones(Shape shape);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">
+                                The data type to be stored. Must be arithmetic or complex (for the size_t overload) or
+                                arithmetic only (for the Shape overload).
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">size : <span class="param-type">size_t</span></div>
+                            <div class="param-description">The size of the array (creates a 1D array).</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                            <div class="param-description">
+                                Dimensions of the shape to create (creates an N-Dimensional array).
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">An NArray object of type dtype filled with ones.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create NArrays filled with ones:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto mat = numxx::ones&lt;float&gt;({2, 3});
+    auto arr = numxx::ones&lt;float&gt;(5);
+
+    std::cout &lt;&lt; mat &lt;&lt; std::endl;
+    // &gt;&gt; [[1 1 1]
+    //     [1 1 1]]
+    std::cout &lt;&lt; arr &lt;&lt; std::endl;
+    // &gt;&gt; [1 1 1 1 1]
+}
+</code></pre>
+                </section>
+
+                <!-- ones_like() Section -->
+                <section class="content-section" id="ones_like">
+                    <h2>numxx::ones_like</h2>
+                    <p>Creates an NArray of ones with the same shape as another NArray.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename U, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; ones_like(const NArray&lt;U&gt;&amp; other);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type of the output array. Must be arithmetic.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">U : <span class="param-type"> </span></div>
+                            <div class="param-description">The data type of the input NArray.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">other : <span class="param-type">NArray</span></div>
+                            <div class="param-description">
+                                The NArray to use as a size reference for the new NArray.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">An NArray of the same shape as other, filled with ones.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create an array of ones with the same shape as another array:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto original = numxx::zeros&lt;float&gt;({3, 4});
+    auto like = numxx::ones_like(original);
+
+    std::cout &lt;&lt; like &lt;&lt; std::endl;
+    // &gt;&gt; [[1 1 1 1]
+    //     [1 1 1 1]
+    //     [1 1 1 1]]
+}
+</code></pre>
+                </section>
+
+                <!-- eye() Section -->
+                <section class="content-section" id="eye">
+                    <h2>numxx::eye</h2>
+                    <p>Creates a 2D identity matrix with ones on the diagonal and zeros elsewhere.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;is_complex_or_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; eye(const size_t n, size_t m = 0);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">
+                                The data type of the matrix. Must be arithmetic or complex.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">n : <span class="param-type">size_t</span></div>
+                            <div class="param-description">Number of rows.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">m : <span class="param-type">size_t (defaults to 0)</span></div>
+                            <div class="param-description">
+                                Number of columns. If 0 (default), m is set equal to n, creating a square matrix.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">
+                                A 2D NArray of shape (n, m) with ones on the diagonal and zeros elsewhere.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create identity matrices:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto I = numxx::eye&lt;double&gt;(3);
+    auto rect = numxx::eye&lt;double&gt;(2, 4);
+
+    std::cout &lt;&lt; I &lt;&lt; std::endl;
+    // &gt;&gt; [[1 0 0]
+    //     [0 1 0]
+    //     [0 0 1]]
+    std::cout &lt;&lt; rect &lt;&lt; std::endl;
+    // &gt;&gt; [[1 0 0 0]
+    //     [0 1 0 0]]
+}
+</code></pre>
+                </section>
+
+                <!-- identity() Section -->
+                <section class="content-section" id="identity">
+                    <h2>numxx::identity</h2>
+                    <p>Creates a square identity matrix.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename = std::enable_if_t&lt;std::is_arithmetic_v&lt;dtype&gt;&gt;&gt;
+NArray&lt;dtype&gt; identity(const size_t n);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type of the matrix. Must be arithmetic.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">n : <span class="param-type">size_t</span></div>
+                            <div class="param-description">The size of the square matrix (n x n).</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">
+                                A square NArray of shape (n, n) with ones on the diagonal and zeros elsewhere.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create a square identity matrix:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto I = numxx::identity&lt;float&gt;(4);
+
+    std::cout &lt;&lt; I &lt;&lt; std::endl;
+    // &gt;&gt; [[1 0 0 0]
+    //     [0 1 0 0]
+    //     [0 0 1 0]
+    //     [0 0 0 1]]
+}
+</code></pre>
+                </section>
+
+                <!-- empty() Section -->
+                <section class="content-section" id="empty">
+                    <h2>numxx::empty</h2>
+                    <p>Creates an uninitialised array with the given shape.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+NArray&lt;dtype&gt; empty(const Shape&amp; shape);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+NArray&lt;dtype&gt; empty(Shape&amp;&amp; shape);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+NArray&lt;dtype&gt; empty(const size_t size);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type to be stored.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                            <div class="param-description">
+                                Dimensions of the shape to create. (const& and && overloads)
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">size : <span class="param-type">size_t</span></div>
+                            <div class="param-description">The size of the array (creates a 1D array).</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">An uninitialised NArray with the requested shape.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create an uninitialised NArray:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto arr = numxx::empty&lt;int&gt;({2, 3});
+    // Uninitialised memory - contents are indeterminate
+    std::cout &lt;&lt; arr.get_shape() &lt;&lt; std::endl;
+    // &gt;&gt; [2 3]
+}
+</code></pre>
+                </section>
+
+                <!-- empty_like() Section -->
+                <section class="content-section" id="empty_like">
+                    <h2>numxx::empty_like</h2>
+                    <p>Creates an uninitialised NArray with the same shape as another NArray.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename U&gt;
+NArray&lt;dtype&gt; empty_like(const NArray&lt;U&gt;&amp; other);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type of the output array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">U : <span class="param-type"> </span></div>
+                            <div class="param-description">The data type of the input NArray.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">other : <span class="param-type">NArray</span></div>
+                            <div class="param-description">The NArray to use as a size reference.</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">An uninitialised NArray of the same shape as other.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create an uninitialised NArray with the shape of another:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto original = numxx::zeros&lt;float&gt;({3, 4});
+    auto like = numxx::empty_like&lt;int&gt;(original);
+
+    std::cout &lt;&lt; like.get_shape() &lt;&lt; std::endl;
+    // &gt;&gt; (2, 3) 
+}
+</code></pre>
+                </section>
+
+                <!-- full() Section -->
+                <section class="content-section" id="full">
+                    <h2>numxx::full</h2>
+                    <p>Returns a new array of given shape and type, filled with fill_value.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+NArray&lt;dtype&gt; full(Shape shape, dtype fill_value);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+NArray&lt;dtype&gt; full(Shape&amp;&amp; shape, dtype fill_value);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double&gt;
+NArray&lt;dtype&gt; full(const size_t shape, dtype fill_value);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type of the array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">shape : <span class="param-type">Shape</span></div>
+                            <div class="param-description">Dimensions of the shape to create.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">fill_value : <span class="param-type">dtype</span></div>
+                            <div class="param-description">The value to fill the array with.</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">An NArray of the given shape filled with fill_value.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create NArrays filled with a specific value:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto arr = numxx::full&lt;int&gt;({2, 3}, 42);
+    auto vec = numxx::full&lt;double&gt;(5, 3.14);
+
+    std::cout &lt;&lt; arr &lt;&lt; std::endl;
+    // &gt;&gt; [[42 42 42]
+    //     [42 42 42]]
+    std::cout &lt;&lt; vec &lt;&lt; std::endl;
+    // &gt;&gt; [3.14 3.14 3.14 3.14 3.14]
+}
+</code></pre>
+                </section>
+
+                <!-- full_like() Section -->
+                <section class="content-section" id="full_like">
+                    <h2>numxx::full_like</h2>
+                    <p>Returns a full array with the same shape as another array, filled with fill_value.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype = double, typename U&gt;
+NArray&lt;dtype&gt; full_like(const NArray&lt;U&gt;&amp; other, dtype fill_value);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type">(defaults to double)</span></div>
+                            <div class="param-description">The data type of the output array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">U : <span class="param-type"> </span></div>
+                            <div class="param-description">The data type of the input NArray.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">other : <span class="param-type">NArray</span></div>
+                            <div class="param-description">The NArray to use as a size reference.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">fill_value : <span class="param-type">dtype</span></div>
+                            <div class="param-description">The value to fill the array with.</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">
+                                An NArray of the same shape as other, filled with fill_value.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create an array filled with a value, matching the shape of another array:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto original = numxx::zeros&lt;float&gt;({2, 2});
+    auto like = numxx::full_like(original, 7.0);
+
+    std::cout &lt;&lt; like &lt;&lt; std::endl;
+    // &gt;&gt; [[7 7]
+    //     [7 7]]
+}
+</code></pre>
+                </section>
+
+                <!-- copy() Section -->
+                <section class="content-section" id="copy">
+                    <h2>numxx::copy</h2>
+                    <p>Returns a shallow copy of the input array.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype&gt;
+NArray&lt;dtype&gt; copy(const NArray&lt;dtype&gt;&amp; arr);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type"> </span></div>
+                            <div class="param-description">The data type of the array.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">arr : <span class="param-type">NArray</span></div>
+                            <div class="param-description">The array to copy.</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">
+                                A shallow copy of arr (shares underlying data with the original).
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create a shallow copy of an NArray:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto arr = numxx::zeros&lt;double&gt;(5);
+    auto shallow = numxx::copy(arr);
+    // `shallow` shares data with `arr`, so they both share the same memory.
+
+    std::cout &lt;&lt; arr.get_start_address() &lt;&lt; std::endl;
+    // &gt;&gt; 0xa000003e0
+
+    std::cout &lt;&lt; shallow.get_start_address() &lt;&lt; std::endl;
+    // &gt;&gt; 0xa000003e0
+}
+</code></pre>
+                </section>
+
+                <!-- deepcopy() Section -->
+                <section class="content-section" id="deepcopy">
+                    <h2>numxx::deepcopy</h2>
+                    <p>Returns a deep copy of the input.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">template &lt;typename dtype&gt;
+NArray&lt;dtype&gt; deepcopy(const NArray&lt;dtype&gt;&amp; arr);</code></pre>
+                    <pre><code class="language-cpp">template &lt;typename dtype&gt;
+dtype deepcopy(const dtype&amp; elem);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">dtype : <span class="param-type"> </span></div>
+                            <div class="param-description">The data type of the input.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">arr : <span class="param-type">NArray</span></div>
+                            <div class="param-description">The array to deep copy.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">elem : <span class="param-type">dtype</span></div>
+                            <div class="param-description">Any element to deep copy.</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;dtype&gt;</div>
+                            <div class="param-description">A deep copy of arr with its own independent data.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">dtype</div>
+                            <div class="param-description">A copy of elem.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create a deep copy of an NArray:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto arr = numxx::zeros&lt;double&gt;(5);
+    auto deep = numxx::deepcopy(arr);
+    // `deep` now has independent memory to `arr`
+
+    std::cout &lt;&lt; arr.get_start_address() &lt;&lt; std::endl;
+    // &gt;&gt; 0xa000003e0
+
+    std::cout &lt;&lt; deep.get_start_address() &lt;&lt; std::endl;
+    // &gt;&gt; 0xa00000450
+}
+</code></pre>
+                </section>
+
+                <!-- logspace() Section -->
+                <section class="content-section" id="logspace">
+                    <h2>numxx::logspace</h2>
+                    <p>Creates an array of evenly spaced values on a logarithmic scale.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">NArray&lt;double&gt; logspace(const float start, const float stop, const uint32_t num = 50, const bool endpoint = true, const float base = 10.0f);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">start : <span class="param-type">float</span></div>
+                            <div class="param-description">
+                                base raised to the power of start is the starting value of the sequence.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">stop : <span class="param-type">float</span></div>
+                            <div class="param-description">
+                                base raised to the power of stop is the ending value of the sequence.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">
+                                num : <span class="param-type">uint32_t (defaults to 50)</span>
+                            </div>
+                            <div class="param-description">Number of samples to generate.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">
+                                endpoint : <span class="param-type">bool (defaults to true)</span>
+                            </div>
+                            <div class="param-description">
+                                If true, stop is the last sample. Otherwise, it is not included.
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">
+                                base : <span class="param-type">float (defaults to 10.0)</span>
+                            </div>
+                            <div class="param-description">The base of the logarithm. Default is 10.0.</div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;double&gt;</div>
+                            <div class="param-description">
+                                An NArray of evenly spaced values on a logarithmic scale.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create an array of log-spaced values:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto arr = numxx::logspace(0.0f, 2.0f, 5);
+
+    std::cout &lt;&lt; arr &lt;&lt; std::endl;
+    // &gt;&gt; [  1.        3.16228  10.       31.62278 100.     ]
+}
+</code></pre>
+                </section>
+
+                <!-- geomspace() Section -->
+                <section class="content-section" id="geomspace">
+                    <h2>numxx::geomspace</h2>
+                    <p>Creates an array of evenly spaced values on a geometric scale.</p>
+
+                    <h3>Syntax</h3>
+                    <pre><code class="language-cpp">NArray&lt;double&gt; geomspace(const float start, const float stop, const uint32_t num = 50, const bool endpoint = true);</code></pre>
+
+                    <h3>Parameters</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">start : <span class="param-type">float</span></div>
+                            <div class="param-description">The starting value of the sequence.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">stop : <span class="param-type">float</span></div>
+                            <div class="param-description">The ending value of the sequence.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">
+                                num : <span class="param-type">uint32_t (defaults to 50)</span>
+                            </div>
+                            <div class="param-description">Number of samples to generate.</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-name">
+                                endpoint : <span class="param-type">bool (defaults to true)</span>
+                            </div>
+                            <div class="param-description">
+                                If true, stop is the last sample. Otherwise, it is not included.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Returns</h3>
+                    <div class="params-section">
+                        <div class="param-item">
+                            <div class="param-name">NArray&lt;double&gt;</div>
+                            <div class="param-description">An NArray of geometrically spaced values.</div>
+                        </div>
+                    </div>
+
+                    <h3>Time Complexity</h3>
+                    <p style="font-weight: bold; font-size: 1.15rem">O(n)</p>
+
+                    <h3>Examples</h3>
+                    <p>Create an array of geometrically spaced values:</p>
+                    <pre><code class="language-cpp">#include "NumXX.hpp"
+
+int main() {
+    auto up = numxx::geomspace(1.0f, 100.0f, 5);
+    auto down = numxx::geomspace(100.0f, 1.0f, 5);
+
+    std::cout &lt;&lt; up &lt;&lt; std::endl;
+    // &gt;&gt; [  1.        3.16228  10.       31.62278 100.     ]
+
+    std::cout &lt;&lt; down &lt;&lt; std::endl;
+    // &gt;&gt; [100.       31.62278   10.       3.16228   1.     ]
+}
 </code></pre>
                 </section>
             </main>

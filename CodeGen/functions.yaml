@@ -2,7 +2,7 @@ numxx::linspace:
   short_name: linspace
   description: "Creates an array of evenly spaced values within a given interval."
   syntax:
-  - "NArray<double> linspace(const float start, const float stop, const size_t count, const bool endpoint = true);"
+  - "NArray<double> linspace(const double start, const double stop, const uint32_t count, const bool endpoint = true);"
   params:
     - start:
       - double
@@ -11,11 +11,11 @@ numxx::linspace:
       - double
       - "The upper bound of the array."
     - count:
-      - size_t
+      - uint32_t
       - "The number of elements in the array."
     - endpoint:
       - bool (defaults to true)
-      - "Spcifies whether on not the value of stop should be included as the last element of the array. Setting endpoint to true makes stop the last element of the array."
+      - "Specifies whether or not the value of stop should be included as the last element of the array. Setting endpoint to true makes stop the last element of the array."
   returns:
     - NArray<double>:
       - "An NArray object of type double with equally spaced elements starting at start and ending at stop.\nIf endpoint is set to true, the elements are spaced such that stop is the final element of the array."
@@ -29,11 +29,12 @@ numxx::arange:
   short_name: arange
   description: "Creates an array of evenly spaced values within a given interval."
   syntax:
+  - "NArray<double> arange(const double start, const double stop, const double step = 1.0);"
   - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> arange(const dtype start, const dtype stop, const dtype step = dtype(1));"
   params:
     - dtype:
       - (defaults to double)
-      - 
+      - "The data type of the elements in the array."
     - start:
       - dtype
       - "The lower bound of the interval. This value is included in the output array."
@@ -56,8 +57,8 @@ numxx::zeros:
   short_name: zeros
   description: "Creates an array of a given shape and calls the default constructor for all elements."
   syntax:
-    - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> zeros(Shape shape);"
-    - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> zeros(const size_t size);"
+    - "template <typename dtype = double>\nNArray<dtype> zeros(Shape shape);"
+    - "template <typename dtype = double>\nNArray<dtype> zeros(const size_t size);"
   params:
     - dtype:
       - (defaults to double)
@@ -69,10 +70,8 @@ numxx::zeros:
       - size_t
       -  "The size of the array (creates a 1D array)."
   returns:
-    - NArray<double>:
+    - NArray<dtype>:
       - "An NArray object of type dtype filled with zeros or the default constructed value of dtype."
-    - int:
-      - "description and what not."
   time_comp:
     - O(n)
   examples:
@@ -109,33 +108,305 @@ numxx::zeros_like:
 
 numxx::ones:
   short_name: ones
+  description: "Creates an array filled with ones."
+  syntax:
+    - "template <typename dtype = double, typename = std::enable_if_t<is_complex_or_arithmetic_v<dtype>>>\nNArray<dtype> ones(const size_t size);"
+    - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> ones(Shape shape);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type to be stored. Must be arithmetic or complex (for the size_t overload) or arithmetic only (for the Shape overload)."
+    - size:
+      - size_t
+      - "The size of the array (creates a 1D array)."
+    - shape:
+      - Shape
+      - "Dimensions of the shape to create (creates an N-Dimensional array)."
+  returns:
+    - NArray<dtype>:
+      - "An NArray object of type dtype filled with ones."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create NArrays filled with ones:"
+    - "ones.cpp"
 
 numxx::ones_like:
   short_name: ones_like
+  description: "Creates an NArray of ones with the same shape as another NArray."
+  syntax:
+    - "template <typename dtype = double, typename U, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> ones_like(const NArray<U>& other);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type of the output array. Must be arithmetic."
+    - U:
+      - " "
+      - "The data type of the input NArray."
+    - other:
+      - NArray
+      - "The NArray to use as a size reference for the new NArray."
+  returns:
+    - NArray<dtype>:
+      - "An NArray of the same shape as other, filled with ones."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create an array of ones with the same shape as another array:"
+    - "ones_like.cpp"
 
 numxx::eye:
   short_name: eye
+  description: "Creates a 2D identity matrix with ones on the diagonal and zeros elsewhere."
+  syntax:
+    - "template <typename dtype = double, typename = std::enable_if_t<is_complex_or_arithmetic_v<dtype>>>\nNArray<dtype> eye(const size_t n, size_t m = 0);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type of the matrix. Must be arithmetic or complex."
+    - n:
+      - size_t
+      - "Number of rows."
+    - m:
+      - size_t (defaults to 0)
+      - "Number of columns. If 0 (default), m is set equal to n, creating a square matrix."
+  returns:
+    - NArray<dtype>:
+      - "A 2D NArray of shape (n, m) with ones on the diagonal and zeros elsewhere."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create identity matrices:"
+    - "eye.cpp"
 
 numxx::identity:
   short_name: identity
+  description: "Creates a square identity matrix."
+  syntax:
+    - "template <typename dtype = double, typename = std::enable_if_t<std::is_arithmetic_v<dtype>>>\nNArray<dtype> identity(const size_t n);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type of the matrix. Must be arithmetic."
+    - n:
+      - size_t
+      - "The size of the square matrix (n x n)."
+  returns:
+    - NArray<dtype>:
+      - "A square NArray of shape (n, n) with ones on the diagonal and zeros elsewhere."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create a square identity matrix:"
+    - "identity.cpp"
 
 numxx::empty:
   short_name: empty
+  description: "Creates an uninitialised array with the given shape."
+  syntax:
+    - "template <typename dtype = double>\nNArray<dtype> empty(const Shape& shape);"
+    - "template <typename dtype = double>\nNArray<dtype> empty(Shape&& shape);"
+    - "template <typename dtype = double>\nNArray<dtype> empty(const size_t size);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type to be stored."
+    - shape:
+      - Shape
+      - "Dimensions of the shape to create. (const& and && overloads)"
+    - size:
+      - size_t
+      - "The size of the array (creates a 1D array)."
+  returns:
+    - NArray<dtype>:
+      - "An uninitialised NArray with the requested shape."
+  time_comp:
+    - O(1)
+  examples:
+    - "Create an uninitialised NArray:"
+    - "empty.cpp"
 
 numxx::empty_like:
   short_name: empty_like
+  description: "Creates an uninitialised NArray with the same shape as another NArray."
+  syntax:
+    - "template <typename dtype = double, typename U>\nNArray<dtype> empty_like(const NArray<U>& other);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type of the output array."
+    - U:
+      - " "
+      - "The data type of the input NArray."
+    - other:
+      - NArray
+      - "The NArray to use as a size reference."
+  returns:
+    - NArray<dtype>:
+      - "An uninitialised NArray of the same shape as other."
+  time_comp:
+    - O(1)
+  examples:
+    - "Create an uninitialised NArray with the shape of another:"
+    - "empty_like.cpp"
 
 numxx::full:
   short_name: full
+  description: "Returns a new array of given shape and type, filled with fill_value."
+  syntax:
+    - "template <typename dtype = double>\nNArray<dtype> full(Shape shape, dtype fill_value);"
+    - "template <typename dtype = double>\nNArray<dtype> full(Shape&& shape, dtype fill_value);"
+    - "template <typename dtype = double>\nNArray<dtype> full(const size_t shape, dtype fill_value);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type of the array."
+    - shape:
+      - Shape
+      - "Dimensions of the shape to create."
+    - fill_value:
+      - dtype
+      - "The value to fill the array with."
+  returns:
+    - NArray<dtype>:
+      - "An NArray of the given shape filled with fill_value."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create NArrays filled with a specific value:"
+    - "full.cpp"
 
 numxx::full_like:
   short_name: full_like
+  description: "Returns a full array with the same shape as another array, filled with fill_value."
+  syntax:
+    - "template <typename dtype = double, typename U>\nNArray<dtype> full_like(const NArray<U>& other, dtype fill_value);"
+  params:
+    - dtype:
+      - (defaults to double)
+      - "The data type of the output array."
+    - U:
+      - " "
+      - "The data type of the input NArray."
+    - other:
+      - NArray
+      - "The NArray to use as a size reference."
+    - fill_value:
+      - dtype
+      - "The value to fill the array with."
+  returns:
+    - NArray<dtype>:
+      - "An NArray of the same shape as other, filled with fill_value."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create an array filled with a value, matching the shape of another array:"
+    - "full_like.cpp"
 
 numxx::copy:
   short_name: copy
+  description: "Returns a shallow copy of the input array."
+  syntax:
+    - "template <typename dtype>\nNArray<dtype> copy(const NArray<dtype>& arr);"
+  params:
+    - dtype:
+      - " "
+      - "The data type of the array."
+    - arr:
+      - NArray
+      - "The array to copy."
+  returns:
+    - NArray<dtype>:
+      - "A shallow copy of arr (shares underlying data with the original)."
+  time_comp:
+    - O(1)
+  examples:
+    - "Create a shallow copy of an NArray:"
+    - "copy.cpp"
 
 numxx::deepcopy:
   short_name: deepcopy
+  description: "Returns a deep copy of the input."
+  syntax:
+    - "template <typename dtype>\nNArray<dtype> deepcopy(const NArray<dtype>& arr);"
+    - "template <typename dtype>\ndtype deepcopy(const dtype& elem);"
+  params:
+    - dtype:
+      - " "
+      - "The data type of the input."
+    - arr:
+      - NArray
+      - "The array to deep copy."
+    - elem:
+      - dtype
+      - "Any element to deep copy."
+  returns:
+    - NArray<dtype>:
+      - "A deep copy of arr with its own independent data."
+    - dtype:
+      - "A copy of elem."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create a deep copy of an NArray:"
+    - "deepcopy.cpp"
+
+numxx::logspace:
+  short_name: logspace
+  description: "Creates an array of evenly spaced values on a logarithmic scale."
+  syntax:
+    - "NArray<double> logspace(const float start, const float stop, const uint32_t num = 50, const bool endpoint = true, const float base = 10.0f);"
+  params:
+    - start:
+      - float
+      - "base raised to the power of start is the starting value of the sequence."
+    - stop:
+      - float
+      - "base raised to the power of stop is the ending value of the sequence."
+    - num:
+      - uint32_t (defaults to 50)
+      - "Number of samples to generate."
+    - endpoint:
+      - bool (defaults to true)
+      - "If true, stop is the last sample. Otherwise, it is not included."
+    - base:
+      - float (defaults to 10.0)
+      - "The base of the logarithm. Default is 10.0."
+  returns:
+    - NArray<double>:
+      - "An NArray of evenly spaced values on a logarithmic scale."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create an array of log-spaced values:"
+    - "logspace.cpp"
+
+numxx::geomspace:
+  short_name: geomspace
+  description: "Creates an array of evenly spaced values on a geometric scale."
+  syntax:
+    - "NArray<double> geomspace(const float start, const float stop, const uint32_t num = 50, const bool endpoint = true);"
+  params:
+    - start:
+      - float
+      - "The starting value of the sequence."
+    - stop:
+      - float
+      - "The ending value of the sequence."
+    - num:
+      - uint32_t (defaults to 50)
+      - "Number of samples to generate."
+    - endpoint:
+      - bool (defaults to true)
+      - "If true, stop is the last sample. Otherwise, it is not included."
+  returns:
+    - NArray<double>:
+      - "An NArray of geometrically spaced values."
+  time_comp:
+    - O(n)
+  examples:
+    - "Create an array of geometrically spaced values:"
+    - "geomspace.cpp"
 
 template:
   ignore_this_please: ignore    # This is to  make the generator ignore this template
@@ -156,4 +427,3 @@ template:
   examples:
     - "Example description"
     - "example_file.cpp"
-
